@@ -10,6 +10,12 @@ El objetivo es ofrecer una plataforma visualmente atractiva, fácil de usar y co
 
 ---
 
+# CapyDo Frontend  
+
+Frontend oficial de CapyDo, una plataforma para gestión de tareas colaborativas.  
+
+---
+
 ## 🎯 Objetivos
 - Fomentar el trabajo en equipo.
 - Facilitar la organización y colaboración.
