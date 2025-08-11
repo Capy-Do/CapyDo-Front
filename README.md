@@ -61,23 +61,33 @@ El objetivo es ofrecer una plataforma visualmente atractiva, fácil de usar y co
 
 ---
 
+## 🧩 Componentes reutilizables (No HTML independiente)
+Estos se integran dentro de otras páginas:
+
+- **NavBar** (WAN) – Barra de navegación (se carga en todas las páginas).
+- **Notificaciones** (WAN) – Panel o dropdown que se muestra dentro de otras vistas, no como página aparte.
+
+---
+
 ## 🗂 Estructura General del Proyecto
-| #  | Tema / Funcionalidad                  | Responsable |
-|----|----------------------------------------|-------------|
-| 1  | Home                                   | ANA         |
-| 2  | Calendario                             | NICO        |
-| 3  | NavBar                                 | WAN         |
-| 4  | Notificaciones                         | WAN         |
-| 5  | Inicio de Sesión                       | EZE         |
-| 6  | Recuperar Contraseña                   | EZE         |
-| 7  | Registro                               | MARIAN      |
-| 8  | Crear Espacio                          | MELI        |
-| 9  | Espacio Creado                         | MELI        |
-| 10 | Crear Proyecto                         | MER         |
-| 11 | Personalizar Perfil                    | ANA         |
-| 12 | IA Chatbot                             | MER         |
-| 13 | Ajustes / Configuración                | MARIAN      |
-| 14 | Configuración del Proyecto (Admin)     | NICO        |
+
+| Tipo             | Tema / Funcionalidad                       | Responsable |
+|------------------|---------------------------------------------|-------------|
+| **HTML completos** | Home                                        | ANA         |
+|                  | Calendario                                  | NICO        |
+|                  | Inicio de Sesión                            | EZE         |
+|                  | Recuperar Contraseña                        | EZE         |
+|                  | Registro                                    | MARIAN      |
+|                  | Crear Espacio                               | MELI        |
+|                  | Espacio Creado                              | MELI        |
+|                  | Crear Proyecto                              | MER         |
+|                  | Personalizar Perfil                         | ANA         |
+|                  | IA Chatbot                                  | MER         |
+|                  | Ajustes / Configuración                     | MARIAN      |
+|                  | Configuración del Proyecto (Administración) | NICO        |
+|------------------|---------------------------------------------|-------------|
+| **Componentes**   | NavBar                                      | WAN         |
+|                  | Notificaciones                              | WAN         |
 
 ---
 
