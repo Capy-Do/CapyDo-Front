@@ -10,7 +10,7 @@ El objetivo es ofrecer una plataforma visualmente atractiva, fácil de usar y co
 
 ---
 
-# CapyDo Frontend  
+## CapyDo Frontend  
 
 Frontend oficial de CapyDo, una plataforma para gestión de tareas colaborativas.  
 
