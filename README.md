@@ -85,7 +85,6 @@ Estos se integran dentro de otras páginas:
 |                  | IA Chatbot                                  | MER         |
 |                  | Ajustes / Configuración                     | MARIAN      |
 |                  | Configuración del Proyecto (Administración) | NICO        |
-|------------------|---------------------------------------------|-------------|
 | **Componentes**   | NavBar                                      | WAN         |
 |                  | Notificaciones                              | WAN         |
 
