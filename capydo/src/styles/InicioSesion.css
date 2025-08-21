@@ -1,120 +1,126 @@
-/* Fondo general */
+/* 🎨 Fondo general de la página */
 body {
-  background-color: #f0f4ff; /* un celeste muy claro */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: #f0f4ff; /* Un celeste muy claro como fondo */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fuente limpia y moderna */
+  margin: 0; /* Saca márgenes por defecto */
+  padding: 0; /* Saca padding por defecto */
+  display: flex; /* Usamos flexbox para centrar el contenido */
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
 }
 
-/* Contenedor principal */
+/* 📦 Contenedor principal del login */
 .login-container {
-  max-width: 380px;
-  margin: 80px auto;
-  padding: 30px;
-  background: #ffffff;
-  border-radius: 12px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
+  width: 450px; /* Ancho fijo del contenedor */
+  margin: 40px auto; /* Centrado con margen superior e inferior */
+  padding: 40px; /* Espacio interno (padding) */
+  background: #ffffff; /* Fondo blanco */
+  border-radius: 4px; /* Bordes levemente redondeados (más rectos que antes) */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1); /* Sombra suave para resaltar */
+  text-align: center; /* Centra el texto dentro del contenedor */
 }
 
-/* Logo */
+/* 🖼️ Logo */
 .login-container img {
-  width: 80px;
-  margin-bottom: 10px;
+  width: 80px; /* Tamaño del logo */
+  margin-bottom: 10px; /* Espacio debajo del logo */
 }
 
+/* 📝 Título principal (ejemplo: "CapyDo") */
 .login-container h1 {
-  font-size: 28px;
-  color: #4a55d2;
-  margin-bottom: 20px;
+  font-size: 28px; /* Tamaño grande */
+  color: #4a55d2; /* Azul violeta */
+  margin-bottom: 20px; /* Espacio inferior */
 }
 
-/* Texto de bienvenida */
+/* 👋 Texto de bienvenida */
 .login-container h2 {
-  font-size: 18px;
-  color: #333;
+  font-size: 18px; /* Un poco más pequeño que el título */
+  color: #333; /* Gris oscuro */
   margin-bottom: 20px;
 }
 
-/* Formulario */
+/* 🖊️ Formulario */
 .login-form {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  align-items: center;
+  flex-direction: column; /* Los inputs y botones se ordenan en columna */
+  gap: 12px; /* Espacio entre elementos */
+  align-items: center; /* Centra los elementos */
+  width: 100%; /* Que ocupe todo el ancho del contenedor */
 }
 
-
-/* Inputs */
+/* 📥 Inputs de correo y contraseña */
 .login-form input {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  outline: none;
-  font-size: 14px;
-  transition: all 0.2s ease-in-out;
+  width: 100%; /* Que ocupen todo el ancho disponible */
+  padding: 12px; /* Espaciado interno */
+  border: 1px solid #dcdcdc; /* Borde gris claro */
+  border-radius: 4px; /* Bordes rectos */
+  outline: none; /* Quita borde azul feo del navegador */
+  font-size: 14px; /* Tamaño de fuente estándar */
+  transition: all 0.2s ease-in-out; /* Animación suave al enfocar */
+  background-color: #ffffff; /* Fondo blanco */
+  color: #000; /* Texto negro */
 }
 
+/* ✨ Efecto al hacer foco en inputs */
 .login-form input:focus {
-  border-color: #4a55d2;
-  box-shadow: 0 0 5px rgba(74, 85, 210, 0.3);
+  border-color: #4a55d2; /* Borde violeta */
+  box-shadow: 0 0 5px rgba(74, 85, 210, 0.3); /* Sombra azul suave */
 }
 
-/* Enlaces extras */
+/* 🔗 Enlaces como "¿Olvidaste tu contraseña?" */
 .login-extra,
 .login-extra a {
   font-size: 13px;
-  color: #4a55d2;
-  text-decoration: none;
+  color: #4a55d2; /* Violeta */
+  text-decoration: none; /* Sin subrayado */
 }
 
 .login-extra a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Subrayado al pasar el mouse */
 }
 
-/* Botón principal */
+/* 🔘 Botón principal "Iniciar sesión" */
 .btn-login {
+  width: 100%; /* Igual de ancho que los inputs */
   padding: 12px;
-  background: #4a55d2;
-  color: white;
+  background: #4a55d2; /* Fondo violeta */
+  color: white; /* Texto blanco */
   font-weight: bold;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 4px; /* Bordes rectos */
+  cursor: pointer; /* Mano al pasar el mouse */
   font-size: 15px;
-  transition: 0.3s;
+  transition: 0.3s; /* Transición suave en hover */
 }
 
 .btn-login:hover {
-  background: #3a44b2;
+  background: #3a44b2; /* Violeta más oscuro */
 }
 
-/* Botón de Google */
+/* 🔘 Botón de "Sign in with Google" */
 .btn-google {
-  display: flex;
+  width: 100%; /* Igual de ancho que los inputs */
+  display: flex; /* Flex para alinear ícono + texto */
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  background: white;
-  border: 1px solid #dcdcdc;
-  border-radius: 8px;
-  padding: 10px;
+  gap: 8px; /* Espacio entre ícono y texto */
+  background: white; /* Fondo blanco */
+  border: 1px solid #dcdcdc; /* Borde gris */
+  border-radius: 4px; /* Bordes rectos */
+  padding: 12px;
   cursor: pointer;
   font-size: 14px;
   font-weight: 500;
-  color: #333;
+  color: #333; /* Texto gris oscuro */
   transition: 0.3s;
 }
 
 .btn-google:hover {
-  background: #f7f7f7;
+  background: #f7f7f7; /* Gris claro al pasar el mouse */
 }
 
-/* Texto abajo */
+/* 📌 Texto inferior tipo "¿Todavía no tienes cuenta?" */
 .register-text {
   font-size: 13px;
   margin-top: 15px;
@@ -128,5 +134,6 @@ body {
 }
 
 .register-text a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /* Subrayado en hover */
 }
+

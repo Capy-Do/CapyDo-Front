@@ -1,12 +1,12 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CreateProject from "./pages/CreateProject";
-import Login from "./pages/Login"; // 👈 agregamos el login
+import Login from "./pages/Login"; // agregué el login
 
 function App() {
   return (
     <Router>
       <Routes>
-        {/* Ruta principal, la que ya usaban */}
+        {/* Ruta principal*/}
         <Route path="/" element={<CreateProject />} />
         
         {/* Nueva ruta para el inicio de sesión */}
