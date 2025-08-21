@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import "../styles/InicioSesion.css"; // ✅ ahora sí funciona porque está dentro de src
+import "../styles/InicioSesion.css";
+import logo from "../assets/logo.png"; // 👈 poné una imagen en src/assets
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -8,45 +9,48 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Datos enviados:", { email, password });
-    // Más adelante se conecta al backend
   };
 
   return (
     <div className="login-container">
-      <h2>Iniciar Sesión</h2>
+      <img src={logo} alt="CapyDo Logo" />
+      <h1>CapyDo</h1>
+      <h2>¡Bienvenido!</h2>
+
       <form className="login-form" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="email">Correo</label>
-          <input
-            type="email"
-            id="email"
-            placeholder="Ingresa tu correo"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
+        <input
+          type="email"
+          placeholder="Correo electrónico"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
 
-        <div className="form-group">
-          <label htmlFor="password">Contraseña</label>
-          <input
-            type="password"
-            id="password"
-            placeholder="Ingresa tu contraseña"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-
-        <button type="submit" className="btn-login">
-          Entrar
-        </button>
+        <input
+          type="password"
+          placeholder="Contraseña"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
 
         <p className="login-extra">
-          <a href="/recuperar-contra">¿Olvidaste tu contraseña?</a>
+          <a href="/recuperar-contra">Olvidé mi contraseña</a>
         </p>
+
+        <button type="submit" className="btn-login">
+          Iniciar sesión
+        </button>
+
+        <button type="button" className="btn-google">
+          <span>G</span> Sign in with Google
+        </button>
       </form>
+
+      <p className="register-text">
+        ¿Todavía no tienes una cuenta?{" "}
+        <a href="/registro">Regístrate</a>
+      </p>
     </div>
   );
 };

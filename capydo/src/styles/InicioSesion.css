@@ -1,58 +1,132 @@
+/* Fondo general */
+body {
+  background-color: #f0f4ff; /* un celeste muy claro */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Contenedor principal */
 .login-container {
-  max-width: 400px;
-  margin: 100px auto;
-  padding: 20px;
+  max-width: 380px;
+  margin: 80px auto;
+  padding: 30px;
   background: #ffffff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+/* Logo */
+.login-container img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.login-container h1 {
+  font-size: 28px;
+  color: #4a55d2;
+  margin-bottom: 20px;
+}
+
+/* Texto de bienvenida */
+.login-container h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Formulario */
 .login-form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 10px;
+  align-items: center;
 }
 
-.form-group {
-  display: flex;
-  flex-direction: column;
-  text-align: left;
-}
 
-label {
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+/* Inputs */
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
   outline: none;
   font-size: 14px;
+  transition: all 0.2s ease-in-out;
 }
 
-input:focus {
-  border-color: #4caf50;
+.login-form input:focus {
+  border-color: #4a55d2;
+  box-shadow: 0 0 5px rgba(74, 85, 210, 0.3);
 }
 
+/* Enlaces extras */
+.login-extra,
+.login-extra a {
+  font-size: 13px;
+  color: #4a55d2;
+  text-decoration: none;
+}
+
+.login-extra a:hover {
+  text-decoration: underline;
+}
+
+/* Botón principal */
 .btn-login {
   padding: 12px;
-  background: #4CAF50;
+  background: #4a55d2;
   color: white;
   font-weight: bold;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 15px;
+  transition: 0.3s;
 }
 
 .btn-login:hover {
-  background: #45a049;
+  background: #3a44b2;
 }
 
-.login-extra {
-  margin-top: 10px;
+/* Botón de Google */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 8px;
+  padding: 10px;
+  cursor: pointer;
   font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  transition: 0.3s;
+}
+
+.btn-google:hover {
+  background: #f7f7f7;
+}
+
+/* Texto abajo */
+.register-text {
+  font-size: 13px;
+  margin-top: 15px;
+  color: #333;
+}
+
+.register-text a {
+  color: #4a55d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-text a:hover {
+  text-decoration: underline;
 }
