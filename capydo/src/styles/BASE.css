@@ -1,0 +1,48 @@
+/* VARIABLES DE PALETA DE COLOR */
+:root {
+  /* Primary Theme Colors */
+  --background: #111827;
+  --foreground: #F9FAFB;
+  --primary: #60A5FA;
+  --primary-foreground: #111827;
+  
+  /* Secondary & Accent Colors */
+  --secondary: #374151;
+  --secondary-foreground: #F9FAFB;
+  --accent: #2C3E50;
+  --accent-foreground: #E5E7EB;
+  
+  /* UI Component Colors */
+  --card: #1F2937;
+  --card-foreground: #F9FAFB;
+  --popover: #1F2937;
+  --popover-foreground: #F9FAFB;
+  --muted: #374151;
+  --muted-foreground: #9CA3AF;
+  
+  /* Utility & Form Colors */
+  --border: #374151;
+  --input: #374151;
+  --ring: #60A5FA;
+  
+  /* Status & Feedback Colors */
+  --destructive: #F87171;
+  --destructive-foreground: #F9FAFB;
+  
+  /* Chart & Visualization Colors */
+  --chart-1: #60A5FA;
+  --chart-2: #FBBF24;
+  --chart-3: #F87171;
+  --chart-4: #A78BFA;
+  --chart-5: #4ADE80;
+  
+  /* Sidebar & Navigation Colors */
+  --sidebar-background: #1F2937;
+  --sidebar-foreground: #F9FAFB;
+  --sidebar-primary: #60A5FA;
+  --sidebar-primary-foreground: #111827;
+  --sidebar-accent: #60A5FA;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #374151;
+  --sidebar-ring: #60A5FA;
+}
