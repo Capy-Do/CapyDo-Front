@@ -1,0 +1,96 @@
+/* Configuración */
+.config-container {
+  background-color: var(--background);
+  color: var(--foreground);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.config-title {
+  font-size: 1.8rem;
+  color: var(--primary);
+  margin-bottom: 1.5rem;
+}
+
+.config-section {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.config-label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: var(--muted-foreground);
+}
+
+.config-input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  background-color: var(--input);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  outline: none;
+}
+
+.config-input:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
+}
+
+.config-button {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  font-weight: bold;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+.config-button:hover {
+  background-color: #3b82f6;
+}
+
+/* Toggle */
+.config-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 22px;
+  background-color: var(--muted);
+  border-radius: 22px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.toggle-switch::after {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background: var(--foreground);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.toggle-switch.active {
+  background-color: var(--primary);
+}
+
+.toggle-switch.active::after {
+  transform: translateX(22px);
+}
