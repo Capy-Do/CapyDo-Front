@@ -71,9 +71,17 @@ const CapyDo = () => {
           <div className="espacios-header">
             <img src={EspaciosIcon} alt="Espacios" className="menu-icon" />
             <h2 className="titulo-barraLateral">Espacios</h2>
+
+            {/* Botón para agregar espacio */}
+            <img 
+              src={AgregarEspacioIcon} 
+              alt="Agregar Espacio" 
+              className="agregar-icon" 
+              onClick={() => console.log("Abrir modal o acción para agregar espacio")} 
+            />
           </div>
           
-          {/* Mostrar solo el mensaje, sin espacios */}
+          {/* Mensaje por defecto */}
           <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
         </section>
 

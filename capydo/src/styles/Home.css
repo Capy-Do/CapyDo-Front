@@ -91,6 +91,7 @@ header {
     margin: 20px 0;
 }
 
+/* --- Sección Espacios --- */
 .barraLateral-espacios {
     padding: 0 20px;
     flex-grow: 1;
@@ -102,24 +103,39 @@ header {
     margin-bottom: 15px;
 }
 
+/* Título "Espacios" */
+.espacios-header .titulo-barraLateral {
+    font-size: 16px;
+    font-weight: 500;
+    color: #505258;
+}
+
+/* Icono de agregar espacio (a la derecha) */
 .agregar-icon {
-    margin-left: auto;
+    margin-left: auto;         /* lo empuja al extremo derecho */
+    width: 20px;
+    height: 20px;
     cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(2%) 
+            saturate(376%) hue-rotate(202deg) brightness(94%) contrast(92%);
     transition: filter 0.2s ease;
 }
 
 .agregar-icon:hover {
-    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) 
+            saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
 }
 
+/* Mensaje cuando no hay espacios */
 .subEspacios {
     text-align: center;
     color: #8E8D8C;
     font-size: 14px;
-    margin-bottom: 15px;
     margin-top: 200px;
+    margin-bottom: 15px;
 }
 
+/* Lista de espacios */
 .espacios-lista {
     display: flex;
     flex-direction: column;
