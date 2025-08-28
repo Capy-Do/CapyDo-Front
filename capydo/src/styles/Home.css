@@ -190,6 +190,7 @@ header {
     background-position: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     min-height: 180px; /* Asegurar altura mínima */
+    margin-left: 10px;
 }
 
 /* Ajustar el botón para que se posicione en la parte inferior derecha */
@@ -231,7 +232,7 @@ header {
     border-radius: 12px;
     padding: 20px;
     margin-top: 20px;
-    margin-left: 10px;
+    margin-left: 20px;
     margin-right: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
