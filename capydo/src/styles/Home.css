@@ -45,12 +45,13 @@ header {
     border-radius: 8px;
     margin-bottom: 5px;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, border 0.2s;
+    border: 2px solid transparent;
 }
 
 .barraLateral-item:hover {
     background-color: #ECF0FD;
-    border-color: #5060C7;
+    border: 2px solid #5060C7; 
 }
 
 .menu-icon {
