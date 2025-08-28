@@ -180,6 +180,7 @@ header {
     display: flex;                     /* activa flexbox */
     justify-content: space-between;    /* texto a la izq, botón a la der */
     align-items: flex-end;               /* centra verticalmente */
+    margin-top: 10px;
     padding: 30px 40px;
     border-radius: 12px;
     color: #ffff;
