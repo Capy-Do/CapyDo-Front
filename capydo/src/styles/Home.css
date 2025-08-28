@@ -175,11 +175,13 @@ header {
 }
 
 /* Banner de Bienvenida */
+/* Modificar el banner para usar flexbox column */
 .banner-bienvenida {
     background-image: url('../assets/fondoPersonalizado.png');
-    display: flex;                     /* activa flexbox */
-    justify-content: space-between;    /* texto a la izq, botón a la der */
-    align-items: flex-end;               /* centra verticalmente */
+    display: flex;
+    flex-direction: column; /* Cambiar a columna */
+    justify-content: space-between; /* Distribuir espacio entre elementos */
+    align-items: flex-start; /* Alinear a la izquierda */
     margin-top: 10px;
     padding: 30px 40px;
     border-radius: 12px;
@@ -187,19 +189,14 @@ header {
     background-size: cover;
     background-position: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    min-height: 180px; /* Asegurar altura mínima */
 }
 
-/* bloque de texto */
-.banner-texto {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
+/* Ajustar el botón para que se posicione en la parte inferior derecha */
 .banner-boton {
-    display: flex;               /* ícono + texto alineados */
-    align-items: center;         /* centra verticalmente */
-    gap: 6px;                    /* espacio entre ícono y texto */
+    display: flex;
+    align-items: center;
+    gap: 6px;
     background-color: rgba(255,255,255,0.2);
     border: none;
     padding: 8px 14px;
@@ -208,9 +205,17 @@ header {
     cursor: pointer;
     color: white;
     transition: background-color 0.2s ease;
-    margin-left: auto;           /* lo empuja al extremo derecho */
+    margin-left: auto; /* Empujar a la derecha */
+    margin-top: auto; /* Empujar hacia abajo */
 }
 
+/* Opcional: Ajustar el texto del banner para mejor espaciado */
+.banner-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%; /* Asegurar que ocupe todo el ancho */
+}
 .banner-boton:hover {
     background-color: rgba(255,255,255,0.35);
 }
