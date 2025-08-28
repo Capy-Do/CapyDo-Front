@@ -45,7 +45,7 @@ header {
     border-radius: 8px;
     margin-bottom: 5px;
     cursor: pointer;
-    transition: background-color 0.2s, border 0.2s;
+    transition: all 0.2s ease;
     border: 2px solid transparent;
 }
 
@@ -54,10 +54,26 @@ header {
     border: 2px solid #5060C7; 
 }
 
+.barraLateral-item:hover .titulo-barraLateral,
+.barraLateral-item.active .titulo-barraLateral {
+    color: #5060C7;
+}
+
+.barraLateral-item.active {
+    background-color: #ECF0FD;
+    border: 2px solid #5060C7; 
+}
+
 .menu-icon {
     width: 20px;
     height: 20px;
-    fill: #505258;
+    transition: filter 0.25s ease-in-out;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(2%) saturate(376%) hue-rotate(202deg) brightness(94%) contrast(92%);
+}
+
+.barraLateral-item:hover .menu-icon,
+.barraLateral-item.active .menu-icon {
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
 }
 
 .titulo-barraLateral {
@@ -65,6 +81,7 @@ header {
     font-size: 16px;
     font-weight: 500;
     margin-left: 12px;
+    transition: color 0.2s ease;
 }
 
 .separador {
@@ -88,6 +105,11 @@ header {
 .agregar-icon {
     margin-left: auto;
     cursor: pointer;
+    transition: filter 0.2s ease;
+}
+
+.agregar-icon:hover {
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
 }
 
 .subEspacios {
@@ -102,6 +124,8 @@ header {
     display: flex;
     flex-direction: column;
     gap: 10px;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .espacio-item {
@@ -111,6 +135,11 @@ header {
     background-color: #e6e4f9;
     padding: 12px 15px;
     border-radius: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.espacio-item:hover {
+    background-color: #d5d2f5;
 }
 
 .espacio-item span {

@@ -11,16 +11,17 @@ import AgregarEspacioIcon from '../assets/icons/agregarEspacio.svg';
 // Componente principal de la aplicación
 const CapyDo = () => {
   // Estado para controlar qué ítem del menú está activo
-  const [activeItem, setActiveItem] = useState('Inicio');
+  const [activeItem, setActiveItem] = useState('');
 
-  // Estado para almacenar y gestionar los espacios de trabajo
-  const [spaces, setSpaces] = useState([]);
-
-  // Función para alternar el estado de favorito de un espacio
-  const toggleFavorite = (id) => {
-    setSpaces(spaces.map(space => 
-      space.id === id ? {...space, favorite: !space.favorite} : space
-    ));
+  // Función para manejar la selección/deselección de items
+  const handleItemClick = (itemName) => {
+    if (activeItem === itemName) {
+      // Si el item ya está activo, lo deseleccionamos
+      setActiveItem('');
+    } else {
+      // Si no está activo, lo seleccionamos
+      setActiveItem(itemName);
+    }
   };
 
   // Array con los elementos del menú principal
@@ -51,7 +52,8 @@ const CapyDo = () => {
             <React.Fragment key={item.name}>
               <div 
                 className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
-                onClick={() => setActiveItem(item.name)}
+                onClick={() => handleItemClick(item.name)}
+                style={{cursor: 'pointer'}}
               >
                 {item.icon}
                 <h2 className="titulo-barraLateral">{item.name}</h2>
@@ -69,24 +71,10 @@ const CapyDo = () => {
           <div className="espacios-header">
             <img src={EspaciosIcon} alt="Espacios" className="menu-icon" />
             <h2 className="titulo-barraLateral">Espacios</h2>
-            <img src={AgregarEspacioIcon} alt="Agregar espacio" className="menu-icon agregar-icon" />
           </div>
-          <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
           
-          <div className="espacios-lista">
-            {spaces.map(space => (
-              <div key={space.id} className="espacio-item">
-                <span>{space.name}</span>
-                <button 
-                  className={`favorito-btn ${space.favorite ? 'active' : ''}`}
-                  onClick={() => toggleFavorite(space.id)}
-                  aria-label={space.favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
-                >
-                  ★
-                </button>
-              </div>
-            ))}
-          </div>
+          {/* Mostrar solo el mensaje, sin espacios */}
+          <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
         </section>
 
         <div className="barraLateral-imagen">
