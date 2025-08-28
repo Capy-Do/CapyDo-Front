@@ -294,10 +294,12 @@ header {
 
 .form-campos input,
 .form-campos select {
+    background-color: #EDF1FF;
     padding: 8px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
+    color: #797979;
 }
 
 .form-botones {
@@ -323,8 +325,8 @@ header {
 }
 
 .btn-cancelar {
-    background-color: #C4C5C7;
-    color: #333;
+    background-color: #ef7474;
+    color: #fff;
 }
 
 .contenedor-tabla {
@@ -370,11 +372,13 @@ header {
 
 .tabla-tareas input,
 .tabla-tareas select {
+    background-color: #EDF1FF;
     width: 100%;
     padding: 6px;
     border: 1px solid #ddd;
     border-radius: 4px;
     font-size: 14px;
+    color: #797979;
 }
 
 /* Estilos para badges de estado y prioridad */
@@ -386,23 +390,23 @@ header {
 }
 
 .estado-pendiente {
-    background-color: #f0f0f0;
+    background-color: #a8e3ff;
     color: #666; 
 }
 
 .estado-en-progreso {
-    background-color: #ECF0FD;
-    color: #5060C7;
+    background-color: #fff7ad;
+    color: #666;
 }
 
 .estado-en-revision {
-    background-color: #FFF4E6;
-    color: #E67C00;
+    background-color: #ffdba6;
+    color: #666;
 }
 
 .estado-completada {
-    background-color: #E6F4EA;
-    color: #138A5C;
+    background-color: #a2d3a3;
+    color: #666;
 }
 
 .prioridad-baja {
@@ -411,11 +415,16 @@ header {
 }
 
 .prioridad-media {
-    background-color: #FFF4E6;
-    color: #E67C00;
+    background-color: #dfe3ff;
+    color: #006fe6;
 }
 
 .prioridad-alta {
+    background-color: #fbe7d8;
+    color: #d98a25;
+}
+
+.prioridad-urgente {
     background-color: #FEE8E8;
     color: #D93025;
 }
@@ -445,4 +454,8 @@ header {
 .btn-icon img {
     width: 16px;
     height: 16px;
+}
+
+.btn-icon img:hover{
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
 }

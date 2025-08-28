@@ -11,12 +11,15 @@ import AgregarEspacioIcon from '../assets/icons/agregarEspacio.svg';
 
 // SVG del Banner de Bienvenida
 import EditarIcon from '../assets/icons/editar.svg';
-// Nuevos iconos para el cuadro de tareas
+
+// SVG de la Tabla de Tareas
 import AgregarIcon from '../assets/icons/agregar.svg';
 import EditarTareaIcon from '../assets/icons/editarTarea.svg';
 import EliminarIcon from '../assets/icons/eliminar.svg';
 import GuardarIcon from '../assets/icons/guardar.svg';
+import GuardarIcon2 from '../assets/icons/guardar2.svg';
 import CancelarIcon from '../assets/icons/cancelar.svg';
+import CancelarIcon2 from '../assets/icons/cancelar2.svg';
 
 const CapyDo = () => {
   const [activeItem, setActiveItem] = useState('');
@@ -422,13 +425,13 @@ const CapyDo = () => {
                               className="btn-icon"
                               onClick={handleGuardarEdicion}
                             >
-                              <img src={GuardarIcon} alt="Guardar" />
+                              <img src={GuardarIcon2} alt="Guardar" />
                             </button>
                             <button 
                               className="btn-icon"
                               onClick={handleCancelarEdicion}
                             >
-                              <img src={CancelarIcon} alt="Cancelar" />
+                              <img src={CancelarIcon2} alt="Cancelar" />
                             </button>
                           </>
                         ) : (
