@@ -5,9 +5,19 @@
   const NavBar = () => {
       const [searchQuery, setSearchQuery] = useState("");
       const [showNotifications, setShowNotifications] = useState(false);
+      const [activeTab, setActiveTab] = useState('todas');
+      const [showOptionsMenu, setShowOptionsMenu] = useState(false);
 
       const toggleNotifications = () => {
           setShowNotifications(!showNotifications);
+      };
+
+      const handleTabClick = (tab) => {
+          setActiveTab(tab);
+      };
+
+      const toggleOptionsMenu = () => {
+          setShowOptionsMenu(!showOptionsMenu);
       };
 
       return (
@@ -55,7 +65,6 @@
                               <path d="M3.15914 13.9784H15.3173C15.6915 13.9785 16.0601 13.8883 16.3921 13.7157C16.7241 13.5431 17.0096 13.293 17.2245 12.9867C17.4394 12.6804 17.5774 12.3268 17.6267 11.9559C17.6761 11.585 17.6354 11.2077 17.508 10.8558L15.2932 4.73248C14.915 3.37168 14.1014 2.17224 12.9769 1.3176C11.8524 0.462958 10.479 0.000164696 9.06659 7.90024e-10C7.59631 -2.29808e-05 6.16998 0.501351 5.0231 1.42134C3.87621 2.34133 3.07736 3.62493 2.75842 5.0602L0.933458 10.9622C0.82601 11.3107 0.801854 11.6795 0.862935 12.039C0.924016 12.3984 1.06863 12.7386 1.28513 13.032C1.50164 13.3254 1.784 13.5639 2.10948 13.7283C2.43497 13.8927 2.7945 13.9784 3.15914 13.9784Z" fill="#5060C7"/>
                               <path d="M5.51373 15.5316C5.69197 16.4094 6.16818 17.1985 6.86168 17.7653C7.55517 18.3322 8.4233 18.6418 9.31898 18.6418C10.2147 18.6418 11.0828 18.3322 11.7763 17.7653C12.4698 17.1985 12.946 16.4094 13.1242 15.5316H5.51373Z" fill="#5060C7"/>
                           </svg>
-                          <span className="notification-badge">3</span>
                       </button>
 
                       {/* Notifications Dropdown */}
@@ -64,14 +73,72 @@
                               {/* Header */}
                               <div className="notifications-header">
                                   <h3 className="notifications-title">Notificaciones</h3>
-                                  <button className="options-btn">⋮</button>
+                                  <div className="options-menu-container">
+                                      <button className="options-btn" onClick={toggleOptionsMenu}>⋮</button>
+                                      
+                                      {/* Options Menu */}
+                                      {showOptionsMenu && (
+                                          <div className="options-menu">
+                                              <button className="option-item">📖 Marcar todo como leído</button>
+                                              <button className="option-item">🗑️ Eliminar todo</button>
+                                              <button className="option-item">⚙️ Configuración de notificaciones</button>
+                                          </div>
+                                      )}
+                                  </div>
                               </div>
 
                               {/* Tab Navigation */}
                               <div className="notifications-tabs">
-                                  <button className="tab active">Todas</button>
-                                  <button className="tab">Menciones</button>
-                                  <button className="tab">Asignaciones</button>
+                                  <button 
+                                      className={`tab ${activeTab === 'todas' ? 'active' : ''}`}
+                                      onClick={() => handleTabClick('todas')}
+                                  >
+                                      Todas
+                                  </button>
+                                  <button 
+                                      className={`tab ${activeTab === 'menciones' ? 'active' : ''}`}
+                                      onClick={() => handleTabClick('menciones')}
+                                  >
+                                      Menciones
+                                  </button>
+                                  <button 
+                                      className={`tab ${activeTab === 'asignaciones' ? 'active' : ''}`}
+                                      onClick={() => handleTabClick('asignaciones')}
+                                  >
+                                      Asignaciones
+                                  </button>
+                              </div>
+
+                              {/* Content Area */}
+                              <div className="notifications-content">
+                                  {activeTab === 'todas' && (
+                                      <div className="notifications-list">
+                                          <div className="empty-state">
+                                              <p>No hay notificaciones</p>
+                                          </div>
+                                      </div>
+                                  )}
+
+                                  {activeTab === 'menciones' && (
+                                      <div className="notifications-list">
+                                          <div className="empty-state">
+                                              <p>No hay menciones</p>
+                                          </div>
+                                      </div>
+                                  )}
+
+                                  {activeTab === 'asignaciones' && (
+                                      <div className="notifications-list">
+                                          <div className="empty-state">
+                                              <p>No hay asignaciones</p>
+                                          </div>
+                                      </div>
+                                  )}
+                              </div>
+
+                              {/* Footer */}
+                              <div className="notifications-footer">
+                                  <button className="view-all-btn">Ver todas las notificaciones</button>
                               </div>
                           </div>
                       )}
