@@ -94,8 +94,15 @@ const CapyDo = () => {
       </aside>
 
       <main className="contenido-principal">
-        <h2>Bienvenido a CapyDo</h2>
-        <p>Selecciona una opción del menú para comenzar.</p>
+        {/* Banner de bienvenida */}
+        <section className="banner-bienvenida">
+          <div className="banner-texto">
+            <p className="banner-fecha">Miércoles, 25 de Junio</p>
+            <h2 className="banner-saludo">Buenos días, Usuario</h2>
+            <p className="banner-mensaje">¿Listo para avanzar en tus metas?</p>
+          </div>
+          <button className="banner-boton">✏️ Personalizar</button>
+        </section>
       </main>
     </div>
   );

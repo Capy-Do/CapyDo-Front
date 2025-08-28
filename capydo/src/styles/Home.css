@@ -163,23 +163,6 @@ header {
     color: #505258;
 }
 
-.favorito-btn {
-    background: none;
-    border: none;
-    color: #d1d5db;
-    font-size: 16px;
-    cursor: pointer;
-    transition: color 0.2s;
-}
-
-.favorito-btn.active {
-    color: #fbbf24;
-}
-
-.favorito-btn:hover {
-    color: #fbbf24;
-}
-
 .barraLateral-imagen {
     padding: 20px;
     text-align: center;
@@ -191,18 +174,40 @@ header {
     border-radius: 8px;
 }
 
-/* Contenido Principal */
-.contenido-principal {
-    flex-grow: 1;
-    padding: 40px;
-    background-color: #f3f4f6;
+/* Banner de Bienvenida */
+.banner-bienvenida {
+    background-image: url('../assets/fondoPersonalizado.png');
+    display: flex;                     /* activa flexbox */
+    justify-content: space-between;    /* texto a la izq, botón a la der */
+    align-items: flex-end;               /* centra verticalmente */
+    padding: 30px 40px;
+    border-radius: 12px;
+    color: #ffff;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
-.contenido-principal h2 {
-    color: #1e40af;
-    margin-bottom: 15px;
+/* bloque de texto */
+.banner-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
-.contenido-principal p {
-    color: #6b7280;
+/* botón personalizar */
+.banner-boton {
+    background-color: rgba(255,255,255,0.2);
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    color: #ffff;
+    transition: background-color 0.2s ease;
+    margin-left: auto; /* fuerza al extremo derecho */
+}
+
+.banner-boton:hover {
+    background-color: rgba(255,255,255,0.35);
 }
