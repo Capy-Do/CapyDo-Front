@@ -1,96 +1,104 @@
 import React, { useState } from 'react';
 import '../styles/Home.css'; 
 
+// Importar los SVGs como URLs
+import InicioIcon from '../assets/icons/inicio.svg';
+import CalendarioIcon from '../assets/icons/calendario.svg';
+import FavoritosIcon from '../assets/icons/favoritos.svg';
+import EspaciosIcon from '../assets/icons/espacios.svg';
+import AgregarEspacioIcon from '../assets/icons/agregarEspacio.svg';
+
 // Componente principal de la aplicación
 const CapyDo = () => {
   // Estado para controlar qué ítem del menú está activo
-const [activeItem, setActiveItem] = useState('Inicio');
+  const [activeItem, setActiveItem] = useState('Inicio');
 
   // Estado para almacenar y gestionar los espacios de trabajo
-const [spaces, setSpaces] = useState([
-    { id: 1, name: 'Proyecto Personal', favorite: false },
-    { id: 2, name: 'Trabajo', favorite: true }, 
-    { id: 3, name: 'Estudios', favorite: false },
-]);
+  const [spaces, setSpaces] = useState([]);
 
   // Función para alternar el estado de favorito de un espacio
-const toggleFavorite = (id) => {
+  const toggleFavorite = (id) => {
     setSpaces(spaces.map(space => 
-    space.id === id ? {...space, favorite: !space.favorite} : space
+      space.id === id ? {...space, favorite: !space.favorite} : space
     ));
-};
+  };
 
   // Array con los elementos del menú principal
-const menuItems = ['Inicio', 'Mi Calendario', 'Favoritos'];
+  const menuItems = [
+    { 
+      name: 'Inicio', 
+      icon: <img src={InicioIcon} alt="Inicio" className="menu-icon" />
+    },
+    { 
+      name: 'Mi Calendario', 
+      icon: <img src={CalendarioIcon} alt="Calendario" className="menu-icon" />
+    },
+    { 
+      name: 'Favoritos', 
+      icon: <img src={FavoritosIcon} alt="Favoritos" className="menu-icon" />
+    }
+  ];
 
-return (
-    // Contenedor principal de la aplicación
+  return (
     <div className="app">
-      {/* Encabezado con el título de la aplicación */}
-    <header>
+      <header>
         <h1 className="titulo">CapyDo</h1>
-    </header>
+      </header>
 
-      {/* Barra lateral con navegación y espacios de trabajo */}
-    <aside className="barraLateral">
-        {/* Navegación principal */}
+      <aside className="barraLateral">
         <nav className="barraLateral-nav">
-          {/* Mapeo de los elementos del menú para crear la navegación */}
-        {menuItems.map(item => (
+          {menuItems.map(item => (
             <div 
-            key={item} 
-            className={`barraLateral-item ${activeItem === item ? 'active' : ''}`}
-            onClick={() => setActiveItem(item)}
+              key={item.name} 
+              className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
+              onClick={() => setActiveItem(item.name)}
             >
-            <h2 className="titulo-barraLateral">{item}</h2>
+              {item.icon}
+              <h2 className="titulo-barraLateral">{item.name}</h2>
             </div>
-        ))}
+          ))}
         </nav>
 
-        {/* Separador visual entre secciones */}
         <hr className="separador" />
 
-        {/* Sección de espacios de trabajo */}
         <section className="barraLateral-espacios">
-        <h2 className="titulo-barraLateral">Espacios</h2>
-        <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
-        
-          {/* Lista de espacios de trabajo */}
-        <div className="espacios-lista">
+          <div className="espacios-header">
+            <img src={EspaciosIcon} alt="Espacios" className="menu-icon" />
+            <h2 className="titulo-barraLateral">Espacios</h2>
+            <img src={AgregarEspacioIcon} alt="Agregar espacio" className="menu-icon agregar-icon" />
+          </div>
+          <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
+          
+          <div className="espacios-lista">
             {spaces.map(space => (
-            <div key={space.id} className="espacio-item">
-                {/* Nombre del espacio */}
+              <div key={space.id} className="espacio-item">
                 <span>{space.name}</span>
-                {/* Botón para marcar/desmarcar como favorito */}
                 <button 
-                className={`favorito-btn ${space.favorite ? 'active' : ''}`}
-                onClick={() => toggleFavorite(space.id)}
-                aria-label={space.favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                  className={`favorito-btn ${space.favorite ? 'active' : ''}`}
+                  onClick={() => toggleFavorite(space.id)}
+                  aria-label={space.favorite ? 'Quitar de favoritos' : 'Agregar a favoritos'}
                 >
-                  {/* Estrella que indica el estado de favorito */}
-                ★
+                  ★
                 </button>
-            </div>
+              </div>
             ))}
-        </div>
+          </div>
         </section>
 
-        {/* Imagen decorativa en la barra lateral */}
         <div className="barraLateral-imagen">
-        <img 
+          <img 
             src="../src/assets/carpinchoBarraLateral.jpg" 
             alt="Carpincho decorativo" 
-        />
+          />
         </div>
-    </aside>
+      </aside>
 
-      {/* Área principal de contenido de la aplicación */}
-    <main className="contenido-principal">
+      <main className="contenido-principal">
         <h2>Bienvenido a CapyDo</h2>
         <p>Selecciona una opción del menú para comenzar.</p>
-    </main>
+      </main>
     </div>
-);
+  );
 };
 
 export default CapyDo;
