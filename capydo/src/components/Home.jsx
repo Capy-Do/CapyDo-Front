@@ -47,15 +47,19 @@ const CapyDo = () => {
 
       <aside className="barraLateral">
         <nav className="barraLateral-nav">
-          {menuItems.map(item => (
-            <div 
-              key={item.name} 
-              className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
-              onClick={() => setActiveItem(item.name)}
-            >
-              {item.icon}
-              <h2 className="titulo-barraLateral">{item.name}</h2>
-            </div>
+          {menuItems.map((item, index) => (
+            <React.Fragment key={item.name}>
+              <div 
+                className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
+                onClick={() => setActiveItem(item.name)}
+              >
+                {item.icon}
+                <h2 className="titulo-barraLateral">{item.name}</h2>
+              </div>
+              
+              {/* Línea divisoria entre secciones, excepto después del último */}
+              {index < menuItems.length - 1 && <hr className="separador" />}
+            </React.Fragment>
           ))}
         </nav>
 
