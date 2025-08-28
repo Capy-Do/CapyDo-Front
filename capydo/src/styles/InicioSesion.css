@@ -51,7 +51,7 @@ body {
 
 /* 📥 Inputs de correo y contraseña */
 .login-form input {
-  width: 100%; /* Que ocupen todo el ancho disponible */
+  width: 95%; /* Que ocupen todo el ancho disponible */
   padding: 12px; /* Espaciado interno */
   border: 1px solid #dcdcdc; /* Borde gris claro */
   border-radius: 4px; /* Bordes rectos */

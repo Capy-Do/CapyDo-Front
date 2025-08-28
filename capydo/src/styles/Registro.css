@@ -1,0 +1,138 @@
+/* 🎨 Fondo general (opcional)
+   Si ya lo manejás en el CSS del login, podés omitir el body acá.
+*/
+
+/* 📦 Contenedor del registro (misma estética que login) */
+.register-container {
+  width: 450px;                 /* Ancho fijo como en login */
+  margin: 40px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 4px;           /* Bordes rectos */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+/* Logo y títulos */
+.register-container img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+.register-container h1 {
+  font-size: 28px;
+  color: #4a55d2;
+  margin-bottom: 20px;
+}
+
+.register-container h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* 🖊️ Formulario */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Inputs iguales que los del login */
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="password"] {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  background-color: #ffffff;
+  color: #000;
+}
+
+.register-form input:focus {
+  border-color: #4a55d2;
+  box-shadow: 0 0 5px rgba(74, 85, 210, 0.3);
+}
+
+/* Errores de validación */
+.error {
+  color: #d33;
+  font-size: 12px;
+  margin-top: -6px;   /* acerca el error al input */
+  align-self: flex-start;
+}
+
+/* Términos y condiciones */
+.terms {
+  width: 100%;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  text-align: left;
+  font-size: 13px;
+  color: #333;
+}
+
+.terms a {
+  color: #4a55d2;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.terms a:hover {
+  text-decoration: underline;
+}
+
+/* Botón principal */
+.btn-register {
+  width: 100%;
+  padding: 12px;
+  background: #4a55d2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: 0.3s;
+}
+
+.btn-register:hover {
+  background: #3a44b2;
+}
+
+.btn-register:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Texto inferior (link a login) */
+.register-extra {
+  font-size: 13px;
+  margin-top: 12px;
+  color: #333;
+}
+
+.register-extra a {
+  color: #4a55d2;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.register-extra a:hover {
+  text-decoration: underline;
+}
+
+/* 📱 Responsive simple */
+@media (max-width: 480px) {
+  .register-container {
+    width: 92vw;
+    padding: 28px;
+  }
+}
