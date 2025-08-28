@@ -11,11 +11,60 @@ import AgregarEspacioIcon from '../assets/icons/agregarEspacio.svg';
 
 // SVG del Banner de Bienvenida
 import EditarIcon from '../assets/icons/editar.svg';
+// Nuevos iconos para el cuadro de tareas
+import AgregarIcon from '../assets/icons/agregar.svg';
+import EditarTareaIcon from '../assets/icons/editarTarea.svg';
+import EliminarIcon from '../assets/icons/eliminar.svg';
+import GuardarIcon from '../assets/icons/guardar.svg';
+import CancelarIcon from '../assets/icons/cancelar.svg';
 
 const CapyDo = () => {
   const [activeItem, setActiveItem] = useState('');
   const [fechaActual, setFechaActual] = useState('');
   const [saludo, setSaludo] = useState('');
+  
+  // Estados para el cuadro de tareas
+  const [tareas, setTareas] = useState([
+    {
+      id: 1,
+      tarea: 'Subir diseño final del tablero Kanban',
+      espacio: 'CopyDo',
+      proyecto: 'Diseño',
+      vence: '26/06',
+      estado: 'En progreso',
+      prioridad: 'Baja'
+    },
+    {
+      id: 2,
+      tarea: 'Rediseñar Home',
+      espacio: 'NetJob',
+      proyecto: 'Diseño',
+      vence: '',
+      estado: 'En progreso',
+      prioridad: 'Baja'
+    },
+    {
+      id: 3,
+      tarea: 'Corregir bugs en vista calendario',
+      espacio: 'CopyDo',
+      proyecto: 'Frontend',
+      vence: '27/06',
+      estado: 'En revision',
+      prioridad: 'Media'
+    }
+  ]);
+  
+  const [editandoId, setEditandoId] = useState(null);
+  const [tareaEditada, setTareaEditada] = useState(null); // Para respaldar la tarea original
+  const [nuevaTarea, setNuevaTarea] = useState({
+    tarea: '',
+    espacio: '',
+    proyecto: '',
+    vence: '',
+    estado: 'Pendiente',
+    prioridad: 'Media'
+  });
+  const [mostrarFormulario, setMostrarFormulario] = useState(false);
 
   // --- Generar fecha y saludo dinámico ---
   useEffect(() => {
@@ -45,6 +94,66 @@ const CapyDo = () => {
     } else {
       setActiveItem(itemName);
     }
+  };
+
+  // Funciones para el manejo de tareas
+  const handleAgregarTarea = () => {
+    if (nuevaTarea.tarea.trim() === '') return;
+    
+    const tarea = {
+      id: Date.now(),
+      ...nuevaTarea
+    };
+    
+    setTareas([...tareas, tarea]);
+    setNuevaTarea({
+      tarea: '',
+      espacio: '',
+      proyecto: '',
+      vence: '',
+      estado: 'Pendiente',
+      prioridad: 'Media'
+    });
+    setMostrarFormulario(false);
+  };
+
+  const handleEditarTarea = (id) => {
+    const tareaAEditar = tareas.find(tarea => tarea.id === id);
+    setTareaEditada({...tareaAEditar}); // Respaldo de la tarea original
+    setEditandoId(id);
+  };
+
+  const handleGuardarEdicion = () => {
+    // Los cambios ya están guardados en el estado tareas
+    setEditandoId(null);
+    setTareaEditada(null); // Limpiamos el respaldo
+  };
+
+  const handleCancelarEdicion = () => {
+    // Restauramos la tarea original
+    if (tareaEditada) {
+      setTareas(tareas.map(tarea => 
+        tarea.id === editandoId ? tareaEditada : tarea
+      ));
+    }
+    setEditandoId(null);
+    setTareaEditada(null);
+  };
+
+  const handleEliminarTarea = (id) => {
+    setTareas(tareas.filter(tarea => tarea.id !== id));
+  };
+
+  const handleInputChange = (e, id, campo) => {
+    const { value } = e.target;
+    setTareas(tareas.map(tarea => 
+      tarea.id === id ? { ...tarea, [campo]: value } : tarea
+    ));
+  };
+
+  const handleNuevaTareaChange = (e) => {
+    const { name, value } = e.target;
+    setNuevaTarea({ ...nuevaTarea, [name]: value });
   };
 
   // Menú lateral
@@ -124,6 +233,227 @@ const CapyDo = () => {
             <img src={EditarIcon} alt="Editar" className="icono-boton" />
             Personalizar
           </button>
+        </section>
+
+        {/* Cuadro de tareas interactivo */}
+        <section className="cuadro-tareas">
+          <div className="tareas-header">
+            <h2 className="titulo-tareas">Mis tareas de la semana</h2>
+            <button 
+              className="btn-agregar"
+              onClick={() => setMostrarFormulario(!mostrarFormulario)}
+            >
+              <img src={AgregarIcon} alt="Agregar" className="icono-btn" />
+              Agregar Tarea
+            </button>
+          </div>
+          
+          {/* Formulario para agregar nueva tarea */}
+          {mostrarFormulario && (
+            <div className="formulario-tarea">
+              <h3>Nueva Tarea</h3>
+              <div className="form-campos">
+                <input
+                  type="text"
+                  name="tarea"
+                  placeholder="Tarea"
+                  value={nuevaTarea.tarea}
+                  onChange={handleNuevaTareaChange}
+                />
+                <input
+                  type="text"
+                  name="espacio"
+                  placeholder="Espacio"
+                  value={nuevaTarea.espacio}
+                  onChange={handleNuevaTareaChange}
+                />
+                <input
+                  type="text"
+                  name="proyecto"
+                  placeholder="Proyecto"
+                  value={nuevaTarea.proyecto}
+                  onChange={handleNuevaTareaChange}
+                />
+                <input
+                  type="text"
+                  name="vence"
+                  placeholder="Vence (dd/mm)"
+                  value={nuevaTarea.vence}
+                  onChange={handleNuevaTareaChange}
+                />
+                <select
+                  name="estado"
+                  value={nuevaTarea.estado}
+                  onChange={handleNuevaTareaChange}
+                >
+                  <option value="Pendiente">Pendiente</option>
+                  <option value="En progreso">En progreso</option>
+                  <option value="En revision">En revisión</option>
+                  <option value="Completada">Completada</option>
+                </select>
+                <select
+                  name="prioridad"
+                  value={nuevaTarea.prioridad}
+                  onChange={handleNuevaTareaChange}
+                >
+                  <option value="Baja">Baja</option>
+                  <option value="Media">Media</option>
+                  <option value="Alta">Alta</option>
+                  <option value="Urgente">Urgente</option>
+                </select>
+              </div>
+              <div className="form-botones">
+                <button className="btn-guardar" onClick={handleAgregarTarea}>
+                  <img src={GuardarIcon} alt="Guardar" className="icono-btn" />
+                  Guardar
+                </button>
+                <button className="btn-cancelar" onClick={() => setMostrarFormulario(false)}>
+                  <img src={CancelarIcon} alt="Cancelar" className="icono-btn" />
+                  Cancelar
+                </button>
+              </div>
+            </div>
+          )}
+          
+          <div className="contenedor-tabla">
+            <table className="tabla-tareas">
+              <thead>
+                <tr>
+                  <th colSpan="2">Próximas</th>
+                  <th colSpan="2">Arrasadas</th>
+                  <th colSpan="2">Finalizadas</th>
+                </tr>
+                <tr className="encabezados-detallados">
+                  <th>Tareas</th>
+                  <th>Espacio</th>
+                  <th>Proyecto</th>
+                  <th>Vence</th>
+                  <th>Estado</th>
+                  <th>Prioridad</th>
+                  <th>Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                {tareas.map(tarea => (
+                  <tr key={tarea.id}>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <input
+                          type="text"
+                          value={tarea.tarea}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'tarea')}
+                        />
+                      ) : (
+                        tarea.tarea
+                      )}
+                    </td>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <input
+                          type="text"
+                          value={tarea.espacio}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'espacio')}
+                        />
+                      ) : (
+                        tarea.espacio
+                      )}
+                    </td>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <input
+                          type="text"
+                          value={tarea.proyecto}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'proyecto')}
+                        />
+                      ) : (
+                        tarea.proyecto
+                      )}
+                    </td>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <input
+                          type="text"
+                          value={tarea.vence}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'vence')}
+                        />
+                      ) : (
+                        tarea.vence
+                      )}
+                    </td>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <select
+                          value={tarea.estado}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'estado')}
+                        >
+                          <option value="Pendiente">Pendiente</option>
+                          <option value="En progreso">En progreso</option>
+                          <option value="En revision">En revisión</option>
+                          <option value="Completada">Completada</option>
+                        </select>
+                      ) : (
+                        <span className={`badge estado-${tarea.estado.toLowerCase().replace(' ', '-')}`}>
+                          {tarea.estado}
+                        </span>
+                      )}
+                    </td>
+                    <td>
+                      {editandoId === tarea.id ? (
+                        <select
+                          value={tarea.prioridad}
+                          onChange={(e) => handleInputChange(e, tarea.id, 'prioridad')}
+                        >
+                          <option value="Baja">Baja</option>
+                          <option value="Media">Media</option>
+                          <option value="Alta">Alta</option>
+                          <option value="Urgente">Urgente</option>
+                        </select>
+                      ) : (
+                        <span className={`badge prioridad-${tarea.prioridad.toLowerCase()}`}>
+                          {tarea.prioridad}
+                        </span>
+                      )}
+                    </td>
+                    <td>
+                      <div className="acciones-tarea">
+                        {editandoId === tarea.id ? (
+                          <>
+                            <button 
+                              className="btn-icon"
+                              onClick={handleGuardarEdicion}
+                            >
+                              <img src={GuardarIcon} alt="Guardar" />
+                            </button>
+                            <button 
+                              className="btn-icon"
+                              onClick={handleCancelarEdicion}
+                            >
+                              <img src={CancelarIcon} alt="Cancelar" />
+                            </button>
+                          </>
+                        ) : (
+                          <>
+                            <button 
+                              className="btn-icon"
+                              onClick={() => handleEditarTarea(tarea.id)}
+                            >
+                              <img src={EditarTareaIcon} alt="Editar" />
+                            </button>
+                            <button 
+                              className="btn-icon"
+                              onClick={() => handleEliminarTarea(tarea.id)}
+                            >
+                              <img src={EliminarIcon} alt="Eliminar" />
+                            </button>
+                          </>
+                        )}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </section>
       </main>
     </div>
