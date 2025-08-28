@@ -1,46 +1,292 @@
-/* NavBar.css - estilos básicos y modernos para el navbar de Capy Do */
+/* NavBar.css - Estilos modernos para CapyDo */
 
+/* Contenedor principal del NavBar */
 .navbar {
   width: 100%;
-  left:0;
+  height: 65px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff;
-  padding: 0.7rem 2rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  background: #ffffff;
+  padding: 0 16px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
   position: sticky;
   top: 0;
-  z-index: 100;
- 
+  z-index: 1000;
+  border-bottom: 1px solid #e5e7eb;
 }
 
+/* Sección del Logo */
 .navbar__logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  min-width: 150px;
+}
+
+.navbar__logo a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #1f2937;
+  font-size: 20px;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.navbar__logo a:hover {
+  transform: scale(1.05);
 }
 
 .navbar__icon {
   width: 32px;
   height: 32px;
+  object-fit: contain;
 }
 
-.navbar__links {
-  list-style: none;
+/* Barra de búsqueda */
+.navbar__search {
   display: flex;
-  gap: 2rem;
+  align-items: center;
+  flex: 1;
+  max-width: 400px;
+  margin: 0 15px;
+  position: relative;
+}
+
+.navbar__search-input {
+  width: 100%;
+  padding: 10px 40px 10px 16px;
+  border: 2px solid #e5e7eb;
+  border-radius: 25px;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: all 0.3s ease;
+  outline: none;
+}
+
+.navbar__search-input:focus {
+  border-color: #6366f1;
+  background: #ffffff;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.navbar__search-btn {
+  position: absolute;
+  right: 5px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar__search-btn:hover {
+  background: #f3f4f6;
+  transform: scale(1.1);
+}
+
+.navbar__search-btn svg {
+  width: 19px;
+  height: 18px;
+  display: block;
+}
+
+/* Sección de acciones (IA, Notificaciones, Perfil) */
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-right: 20px;
+}
+
+/* Botones de acción */
+.navbar__action-btn {
+  position: relative;
+  background: transparent;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+}
+
+.navbar__action-btn svg {
+  width: 22px;
+  height: 22px;
+}
+
+.navbar__action-btn:hover {
+  background: #f3f4f6;
+  transform: translateY(-2px);
+}
+
+.navbar__action-btn:hover svg path {
+  fill: #4f46e5;
+  transition: fill 0.3s ease;
+}
+
+/* Badge de notificaciones */
+.notification-badge {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: #ef4444;
+  color: white;
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+}
+
+/* Perfil */
+.navbar__profile {
+  position: relative;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.navbar__profile:hover {
+  transform: scale(1.1);
+}
+
+.navbar__profile-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.navbar__profile-img:hover {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+/* Notifications Dropdown */
+.notification-container {
+  position: relative;
+}
+
+.notifications-dropdown {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  z-index: 1000;
+  margin-top: 8px;
+}
+
+.notifications-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.notifications-title {
   margin: 0;
-  padding: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
 }
 
-.navbar__links a {
-  text-decoration: none;
-  color: #333;
+.options-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #6b7280;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.options-btn:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.notifications-tabs {
+  display: flex;
+  background: #f9fafb;
+  margin: 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  font-size: 14px;
   font-weight: 500;
-  transition: color 0.2s;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.navbar__links a:hover {
-  color: #4f46e5;
+.tab:hover {
+  color: #374151;
+  background: #f3f4f6;
+}
+
+.tab.active {
+  color: #5060c7;
+  background: #ffffff;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #5060c7;
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+  }
+  
+  .navbar__search {
+    display: none;
+  }
+  
+  .navbar__logo span {
+    display: none;
+  }
+  
+  .navbar__actions {
+    gap: 10px;
+  }
+
+  .notifications-dropdown {
+    width: 280px;
+    right: -10px;
+  }
 }
