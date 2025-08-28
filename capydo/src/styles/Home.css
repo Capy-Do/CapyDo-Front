@@ -195,19 +195,28 @@ header {
     gap: 5px;
 }
 
-/* botón personalizar */
 .banner-boton {
+    display: flex;               /* ícono + texto alineados */
+    align-items: center;         /* centra verticalmente */
+    gap: 6px;                    /* espacio entre ícono y texto */
     background-color: rgba(255,255,255,0.2);
     border: none;
     padding: 8px 14px;
     border-radius: 6px;
     font-size: 14px;
     cursor: pointer;
-    color: #ffff;
+    color: white;
     transition: background-color 0.2s ease;
-    margin-left: auto; /* fuerza al extremo derecho */
+    margin-left: auto;           /* lo empuja al extremo derecho */
 }
 
 .banner-boton:hover {
     background-color: rgba(255,255,255,0.35);
 }
+
+.icono-boton {
+    width: 16px;
+    height: 16px;
+    filter: brightness(0) invert(1); /* para que se vea blanco */
+}
+
