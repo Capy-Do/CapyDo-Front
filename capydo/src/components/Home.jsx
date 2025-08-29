@@ -30,6 +30,7 @@ const CapyDo = () => {
   const [fechaActual, setFechaActual] = useState('');
   const [activeTab, setActiveTab] = useState('');
   const [saludo, setSaludo] = useState('');
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
   const handleTabClick = (tab) => {
     if (activeTab === tab) {
@@ -41,6 +42,7 @@ const CapyDo = () => {
 
   const [nota, setNota] = useState(localStorage.getItem("nota") || "");
   const [historialNotas, setHistorialNotas] = useState([]);
+  
   // Guardar nota nueva
   const handleAgregarNota = () => {
     if (nota.trim() !== "") {
@@ -50,16 +52,32 @@ const CapyDo = () => {
     }
   };
 
-// Mostrar historial guardado
-useEffect(() => {
-  const historialGuardado = JSON.parse(localStorage.getItem("historialNotas")) || [];
-  setHistorialNotas(historialGuardado);
-}, []);
+  // Mostrar historial guardado
+  useEffect(() => {
+    const historialGuardado = JSON.parse(localStorage.getItem("historialNotas")) || [];
+    setHistorialNotas(historialGuardado);
+  }, []);
 
-// Guardar cambios en tiempo real
-useEffect(() => {
-  localStorage.setItem("nota", nota);
-}, [nota]);
+  // Guardar cambios en tiempo real
+  useEffect(() => {
+    localStorage.setItem("nota", nota);
+  }, [nota]);
+
+  // Efecto para manejar el movimiento del mouse (parallax)
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Calcular posición relativa del mouse (valores entre -0.5 y 0.5)
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
 
   // Estados para el cuadro de tareas
   const [tareas, setTareas] = useState([
@@ -130,7 +148,6 @@ useEffect(() => {
     }
   return true; // Si no hay pestaña activa, muestra todas
 });
-
 
   // --- Generar fecha y saludo dinámico ---
   useEffect(() => {
@@ -288,8 +305,13 @@ useEffect(() => {
       </aside>
 
       <main className="contenido-principal">
-        {/* Banner de bienvenida */}
-        <section className="banner-bienvenida">
+        {/* Banner de bienvenida con efecto parallax */}
+        <section 
+          className="banner-bienvenida"
+          style={{
+            backgroundPosition: `${50 + mousePosition.x * 10}% ${50 + mousePosition.y * 10}%`
+          }}
+        >
           <div className="banner-texto">
             <p className="banner-fecha">{fechaActual}</p>
             <h2 className="banner-saludo">{saludo}, Usuario</h2>

@@ -174,23 +174,24 @@ header {
     border-radius: 8px;
 }
 
-/* Banner de Bienvenida */
-/* Modificar el banner para usar flexbox column */
+/* Banner de Bienvenida con efecto parallax */
 .banner-bienvenida {
     background-image: url('../assets/fondoPersonalizado.png');
     display: flex;
-    flex-direction: column; /* Cambiar a columna */
-    justify-content: space-between; /* Distribuir espacio entre elementos */
-    align-items: flex-start; /* Alinear a la izquierda */
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
     margin-top: 10px;
     padding: 30px 40px;
     border-radius: 12px;
     color: #ffff;
-    background-size: cover;
+    background-size: 120%; /* Aumentamos ligeramente el tamaño para permitir movimiento */
     background-position: center;
     box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    min-height: 180px; /* Asegurar altura mínima */
+    min-height: 180px;
     margin-left: 10px;
+    transition: background-position 0.1s ease-out; /* Transición suave para el movimiento */
+    will-change: background-position; /* Optimización de rendimiento */
 }
 
 /* Ajustar el botón para que se posicione en la parte inferior derecha */
@@ -556,4 +557,29 @@ header {
 
 .icono-nota:hover {
     filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
+}
+
+/* Contenido principal */
+.contenido-principal {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* Estilos para el banner de fecha, saludo y mensaje */
+.banner-fecha {
+    font-size: 14px;
+    opacity: 0.9;
+    margin-bottom: 5px;
+}
+
+.banner-saludo {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.banner-mensaje {
+    font-size: 14px;
+    opacity: 0.9;
 }
