@@ -7,6 +7,8 @@
       const [showNotifications, setShowNotifications] = useState(false);
       const [activeTab, setActiveTab] = useState('todas');
       const [showOptionsMenu, setShowOptionsMenu] = useState(false);
+      const [notificationSearch, setNotificationSearch] = useState("");
+      const [showOnlyUnread, setShowOnlyUnread] = useState(false);
 
       const toggleNotifications = () => {
           setShowNotifications(!showNotifications);
@@ -107,6 +109,31 @@
                                   >
                                       Asignaciones
                                   </button>
+                              </div>
+
+                              {/* Search and Filter Bar */}
+                              <div className="notifications-search-bar">
+                                  <div className="notification-search-container">
+                                      <div className="search-icon">🔍</div>
+                                      <input
+                                          type="text"
+                                          placeholder="Buscar todas las notificaciones"
+                                          value={notificationSearch}
+                                          onChange={(e) => setNotificationSearch(e.target.value)}
+                                          className="notification-search-input"
+                                      />
+                                  </div>
+                                  <div className="unread-toggle-container">
+                                      <span className="toggle-label">Solo no leídas</span>
+                                      <label className="toggle-switch">
+                                          <input
+                                              type="checkbox"
+                                              checked={showOnlyUnread}
+                                              onChange={(e) => setShowOnlyUnread(e.target.checked)}
+                                          />
+                                          <span className="toggle-slider"></span>
+                                      </label>
+                                  </div>
                               </div>
 
                               {/* Content Area */}
