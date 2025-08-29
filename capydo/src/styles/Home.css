@@ -481,3 +481,79 @@ header {
     background-color: #5060C7;
     color: white;
 }
+
+/* --- Reuniones y Bloc de Notas --- */
+.reuniones-notas {
+    display: flex;
+    gap: 20px;
+    margin: 20px;
+}
+
+.reuniones-card, .notas-card {
+    flex: 1;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.titulo-reuniones, .titulo-notas {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.reunion-item {
+    background-color: #ECF0FD;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.reunion-titulo {
+    color: #5060C7;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.notas-textarea {
+    width: 100%;
+    min-height: 180px;
+    background-color: #ECF0FD;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    resize: none;
+    outline: none;
+    color: #333;
+}
+.notas-textarea:focus {
+    border-color: #5060C7;
+    box-shadow: 0 0 4px rgba(80, 96, 199, 0.4);
+}
+
+.notas-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.notas-actions {
+    display: flex;
+    gap: 12px;
+}
+
+.icono-nota {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(2%) saturate(376%) hue-rotate(202deg) brightness(94%) contrast(92%);
+    transition: filter 0.2s ease;
+}
+
+.icono-nota:hover {
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
+}

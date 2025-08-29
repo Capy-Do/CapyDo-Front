@@ -21,6 +21,10 @@ import GuardarIcon2 from '../assets/icons/guardar2.svg';
 import CancelarIcon from '../assets/icons/cancelar.svg';
 import CancelarIcon2 from '../assets/icons/cancelar2.svg';
 
+// SVG del Bloc de Notas Personal
+import AgregarNotaIcon from '../assets/icons/agregarNota.svg'
+import HistorialIcon from '../assets/icons/historial.svg'
+
 const CapyDo = () => {
   const [activeItem, setActiveItem] = useState('');
   const [fechaActual, setFechaActual] = useState('');
@@ -35,6 +39,27 @@ const CapyDo = () => {
     }
   };
 
+  const [nota, setNota] = useState(localStorage.getItem("nota") || "");
+  const [historialNotas, setHistorialNotas] = useState([]);
+  // Guardar nota nueva
+  const handleAgregarNota = () => {
+    if (nota.trim() !== "") {
+      const nuevaNota = { id: Date.now(), texto: nota };
+      setHistorialNotas([...historialNotas, nuevaNota]);
+      localStorage.setItem("historialNotas", JSON.stringify([...historialNotas, nuevaNota]));
+    }
+  };
+
+// Mostrar historial guardado
+useEffect(() => {
+  const historialGuardado = JSON.parse(localStorage.getItem("historialNotas")) || [];
+  setHistorialNotas(historialGuardado);
+}, []);
+
+// Guardar cambios en tiempo real
+useEffect(() => {
+  localStorage.setItem("nota", nota);
+}, [nota]);
 
   // Estados para el cuadro de tareas
   const [tareas, setTareas] = useState([
@@ -64,6 +89,15 @@ const CapyDo = () => {
       vence: '27/06',
       estado: 'En revision',
       prioridad: 'Media'
+    },
+    {
+      id: 4,
+      tarea: 'Preparar presentación final del proyecto',
+      espacio: 'CapyDo',
+      proyecto: 'Frontend',
+      vence: '05/09',
+      estado: 'Completada',
+      prioridad: 'Alta'
     }
   ]);
   
@@ -504,6 +538,52 @@ const CapyDo = () => {
                 ))}
               </tbody>
             </table>
+          </div>
+        </section>
+        {/* Sección de próximas reuniones y bloc de notas */}
+        <section className="reuniones-notas">
+          {/* Próximas reuniones */}
+          <div className="reuniones-card">
+            <h2 className="titulo-reuniones">Próximas reuniones</h2>
+            <div className="reunion-item">
+              <h3 className="reunion-titulo">🧑‍💼 Reunión con PM</h3>
+              <p>📅 Viernes, 27 de Junio</p>
+              <p>⏰ 8:30 AM - 9:15 AM</p>
+              <p>👥 4 participantes</p>
+            </div>
+            <div className="reunion-item">
+              <h3 className="reunion-titulo">📝 Revisión Sprint 2</h3>
+              <p>📅 Sábado, 28 de Junio</p>
+              <p>⏰ 8:30 AM - 9:30 AM</p>
+              <p>👥 3 participantes</p>
+            </div>
+          </div>
+
+          {/* Bloc de notas personal */}
+          <div className="notas-card">
+            <div className="notas-header">
+              <h2 className="titulo-notas">Bloc de notas personal</h2>
+              <div className="notas-actions">
+                <img 
+                  src={HistorialIcon} 
+                  alt="Historial" 
+                  className="icono-nota" 
+                  onClick={() => alert(JSON.stringify(historialNotas, null, 2))} 
+                />
+                <img 
+                  src={AgregarNotaIcon} 
+                  alt="Agregar Nota" 
+                  className="icono-nota" 
+                  onClick={handleAgregarNota} 
+                />
+              </div>
+            </div>
+            <textarea 
+              className="notas-textarea" 
+              value={nota}
+              onChange={(e) => setNota(e.target.value)}
+              placeholder="Escribe tus notas aquí..."
+            ></textarea>
           </div>
         </section>
       </main>
