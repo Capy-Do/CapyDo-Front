@@ -1,0 +1,105 @@
+/* capydo/src/styles/Recuperar.css */
+
+/* 🎨 Fondo / contenedor: estilo coherente con Login/Register */
+.recover-container {
+  width: 450px;               /* Mismo ancho que login/register */
+  margin: 40px auto;
+  padding: 36px;
+  background: #ffffff;
+  border-radius: 4px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+}
+
+/* Logo */
+.recover-container img {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+/* Títulos */
+.recover-container h1 {
+  font-size: 26px;
+  color: #4a55d2;
+  margin-bottom: 8px;
+}
+
+.recover-desc {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 18px;
+}
+
+/* Formulario central */
+.recover-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+}
+
+/* Input de email */
+.recover-form input[type="email"] {
+  width: 95%;
+  padding: 12px;
+  border: 1px solid #dcdcdc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  background-color: #fff;
+  color: #000;
+}
+
+.recover-form input:focus {
+  border-color: #4a55d2;
+  box-shadow: 0 0 6px rgba(74, 85, 210, 0.15);
+}
+
+/* Mensajes */
+.error {
+  color: #c62828;
+  font-size: 13px;
+  align-self: flex-start;
+  margin-top: -6px;
+}
+
+.success {
+  color: #2e7d32;
+  font-size: 13px;
+}
+
+/* Botón principal */
+.btn-recover {
+  width: 100%;
+  padding: 12px;
+  background: #4a55d2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 15px;
+  transition: background 0.2s;
+}
+
+.btn-recover:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-recover:hover:not(:disabled) {
+  background: #3a44b2;
+}
+
+/* Texto de volver */
+.back-text {
+  font-size: 13px;
+  margin-top: 14px;
+  color: #333;
+}
+
+.back-text a {
+  color: #4a55d2;
+  text-decoration: none;
+}

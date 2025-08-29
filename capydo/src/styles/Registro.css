@@ -16,13 +16,13 @@
 /* Logo y títulos */
 .register-container img {
   width: 80px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .register-container h1 {
   font-size: 28px;
   color: #4a55d2;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .register-container h2 {
