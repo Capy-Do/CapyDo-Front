@@ -20,6 +20,7 @@
   align-items: center;
   padding: 16px 20px;
   border-bottom: 1px solid #e5e7eb;
+  background: linear-gradient(135deg, #f0f0ff 0%, #f8f9ff 100%);
 }
 
 .notifications-title {
@@ -213,7 +214,7 @@
   background: none;
   border: none;
   text-align: left;
-  font-size: 14px;
+  font-size: 9.5px;
   color: #374151;
   cursor: pointer;
   transition: background 0.2s ease;
@@ -232,6 +233,13 @@
 
 .option-item:last-child {
   border-radius: 0 0 8px 8px;
+}
+
+.option-svg-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 0;
 }
 
 /* Notifications Content */
