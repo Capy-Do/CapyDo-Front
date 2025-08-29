@@ -1,0 +1,87 @@
+/* Register.css */
+
+/* Usamos las variables de color definidas en :root */
+
+/* Contenedor principal */
+.card {
+  background-color: var(--card);
+  color: var(--card-foreground);
+  width: 400px;
+  max-width: 90%;
+  margin: 3rem auto;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Título */
+.card h2 {
+  margin-bottom: 1.5rem;
+  font-size: 1.8rem;
+  color: var(--primary);
+}
+
+/* Formulario */
+.form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* espacio entre inputs */
+}
+
+/* Inputs */
+.form input {
+  background-color: var(--input);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  transition: border 0.2s, box-shadow 0.2s;
+}
+
+.form input::placeholder {
+  color: var(--muted-foreground);
+}
+
+.form input:focus {
+  outline: none;
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.3);
+}
+
+/* Botón */
+.form button {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+  padding: 0.8rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.form button:hover {
+  background-color: #3b82f6; /* un azul un poco más fuerte para hover */
+  transform: translateY(-2px);
+}
+
+.form button:active {
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .card {
+    padding: 1.5rem;
+    width: 90%;
+  }
+  .card h2 {
+    font-size: 1.5rem;
+  }
+}

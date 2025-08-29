@@ -1,17 +1,25 @@
-/* Configuración */
+/* Settings.css */
+
+/* Contenedor principal */
 .config-container {
   background-color: var(--background);
   color: var(--foreground);
   min-height: 100vh;
   padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+/* Título principal */
 .config-title {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--primary);
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
 }
 
+/* Sección individual */
 .config-section {
   background-color: var(--card);
   color: var(--card-foreground);
@@ -19,8 +27,12 @@
   border-radius: 12px;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
+  width: 100%;
+  max-width: 450px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
+/* Label de input */
 .config-label {
   display: block;
   font-size: 0.9rem;
@@ -28,14 +40,17 @@
   color: var(--muted-foreground);
 }
 
+/* Inputs y select */
 .config-input {
   width: 100%;
-  padding: 0.6rem 0.8rem;
+  padding: 0.8rem 1rem;
   background-color: var(--input);
   color: var(--foreground);
   border: 1px solid var(--border);
   border-radius: 8px;
+  font-size: 1rem;
   outline: none;
+  transition: border 0.2s, box-shadow 0.2s;
 }
 
 .config-input:focus {
@@ -43,6 +58,7 @@
   box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.3);
 }
 
+/* Botón */
 .config-button {
   background-color: var(--primary);
   color: var(--primary-foreground);
@@ -52,10 +68,16 @@
   border-radius: 8px;
   cursor: pointer;
   margin-top: 1rem;
+  transition: background-color 0.2s, transform 0.1s;
 }
 
 .config-button:hover {
   background-color: #3b82f6;
+  transform: translateY(-2px);
+}
+
+.config-button:active {
+  transform: translateY(0);
 }
 
 /* Toggle */
@@ -93,4 +115,20 @@
 
 .toggle-switch.active::after {
   transform: translateX(22px);
+}
+
+/* Responsive para móviles */
+@media (max-width: 480px) {
+  .config-container {
+    padding: 1rem;
+  }
+
+  .config-section {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .config-title {
+    font-size: 1.6rem;
+  }
 }

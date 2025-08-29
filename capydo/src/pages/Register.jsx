@@ -1,3 +1,5 @@
+import './Register.css'; //importar css 
+
 export default function Register() {
   return (
     <div className="card">

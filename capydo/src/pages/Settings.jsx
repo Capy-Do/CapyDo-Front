@@ -1,4 +1,6 @@
-export default function Config() { //componente configuración
+import './Settings.css'; //importar css 
+
+export default function Settings() { //componente configuración
   return (
     <div className="config-container">
       <h2 className="config-title">Configuración</h2> {/*titulo*/}
