@@ -24,8 +24,18 @@ import CancelarIcon2 from '../assets/icons/cancelar2.svg';
 const CapyDo = () => {
   const [activeItem, setActiveItem] = useState('');
   const [fechaActual, setFechaActual] = useState('');
+  const [activeTab, setActiveTab] = useState('');
   const [saludo, setSaludo] = useState('');
   
+  const handleTabClick = (tab) => {
+    if (activeTab === tab) {
+      setActiveTab(""); // Si ya está seleccionada, la deseleccionamos
+    } else {
+      setActiveTab(tab); // Sino, la activamos
+    }
+  };
+
+
   // Estados para el cuadro de tareas
   const [tareas, setTareas] = useState([
     {
@@ -68,6 +78,25 @@ const CapyDo = () => {
     prioridad: 'Media'
   });
   const [mostrarFormulario, setMostrarFormulario] = useState(false);
+
+  // Filtrar tareas según pestaña activa
+  const tareasFiltradas = tareas.filter(tarea => {
+    if (activeTab === "Proximas") {
+      return tarea.estado === "Pendiente" || tarea.estado === "En progreso";
+    }
+    if (activeTab === "Atrasadas") {
+      // Ejemplo: atrasadas = con fecha vencida
+      if (!tarea.vence) return false;
+      const [dia, mes] = tarea.vence.split("/").map(Number);
+      const fechaVencimiento = new Date(new Date().getFullYear(), mes - 1, dia);
+      return fechaVencimiento < new Date() && tarea.estado !== "Completada";
+    }
+    if (activeTab === "Finalizadas") {
+      return tarea.estado === "Completada";
+    }
+  return true; // Si no hay pestaña activa, muestra todas
+});
+
 
   // --- Generar fecha y saludo dinámico ---
   useEffect(() => {
@@ -321,10 +350,28 @@ const CapyDo = () => {
           <div className="contenedor-tabla">
             <table className="tabla-tareas">
               <thead>
-                <tr>
-                  <th colSpan="2">Próximas</th>
-                  <th colSpan="2">Arrasadas</th>
-                  <th colSpan="2">Finalizadas</th>
+                <tr className="tabs-tareas">
+                  <th 
+                    className={`tab-item ${activeTab === "Proximas" ? "active" : ""}`} 
+                    colSpan="2" 
+                    onClick={() => handleTabClick("Proximas")}
+                  >
+                    Próximas
+                  </th>
+                  <th 
+                    className={`tab-item ${activeTab === "Atrasadas" ? "active" : ""}`} 
+                    colSpan="2" 
+                    onClick={() => handleTabClick("Atrasadas")}
+                  >
+                    Atrasadas
+                  </th>
+                  <th 
+                    className={`tab-item ${activeTab === "Finalizadas" ? "active" : ""}`} 
+                    colSpan="2" 
+                    onClick={() => handleTabClick("Finalizadas")}
+                  >
+                    Finalizadas
+                  </th>
                 </tr>
                 <tr className="encabezados-detallados">
                   <th>Tareas</th>
@@ -336,8 +383,9 @@ const CapyDo = () => {
                   <th>Acciones</th>
                 </tr>
               </thead>
+
               <tbody>
-                {tareas.map(tarea => (
+                {tareasFiltradas.map(tarea => (
                   <tr key={tarea.id}>
                     <td>
                       {editandoId === tarea.id ? (

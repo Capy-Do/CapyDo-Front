@@ -214,6 +214,7 @@ header {
 .banner-texto {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 5px;
     width: 100%; /* Asegurar que ocupe todo el ancho */
 }
@@ -459,4 +460,24 @@ header {
 
 .btn-icon img:hover{
     filter: brightness(0) saturate(100%) invert(34%) sepia(93%) saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
+}
+
+.tabs-tareas .tab-item {
+    cursor: pointer;
+    text-align: center;
+    padding: 10px;
+    font-weight: 600;
+    color: #505258;
+    transition: all 0.3s ease;
+    border-radius: 6px 6px 0 0;
+}
+
+.tabs-tareas .tab-item:hover {
+    background-color: #ECF0FD;
+    color: #5060C7;
+}
+
+.tabs-tareas .tab-item.active {
+    background-color: #5060C7;
+    color: white;
 }
