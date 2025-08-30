@@ -1,9 +1,9 @@
-import CreateProject from './pages/CreateProject';
+import CreateWorkspaceCard from './components/CreateWorkspaceCard';
 
 function App() {
   return (
     <div>
-      <CreateProject />
+      <CreateWorkspaceCard />
     </div>
   );
 }

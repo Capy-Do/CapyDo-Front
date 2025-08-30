@@ -1,0 +1,114 @@
+.pageWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* ocupa toda la pantalla */
+  background: #18224873; /* fondo oscuro semi-transparente */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh; 
+}
+
+.card {
+  position: relative;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px #4f66f946;
+  padding: 24px;
+  width: 400px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: #292A2E;
+  stroke: #CCCDCF;
+}
+
+/* Header con título y cerrar */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 0px;
+  right: 12px;
+  padding: 5px;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  color: #505258;
+}
+
+/* Imagen */
+.imageContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.imageCircle {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 2px dashed #aaa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 36px;
+  color: #aaa;
+  cursor: pointer;
+  position: relative;
+}
+
+.imageCircle input {
+  display: none;
+}
+
+.imagePreview {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input {
+  padding: 11px;
+  border: 1px solid #CCCDCF;
+  border-radius: 8px;
+  background: #fff;
+  color: #292A2E;
+}
+
+.submitBtn {
+  background: #ECF1FF;
+  color: #5060C7;
+  padding: 11px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  
+}
+
+.submitBtn:hover {
+  color: #ffff;
+  background: #5060C7;
+}
+
+.closeBtn:focus,
+.input:focus,
+.submitBtn:focus {
+  outline: none;
+}
