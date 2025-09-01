@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/Home.css'; 
 
-// Importar los SVGs como URLs
+// Importar íconos SVGs como URLs
 // SVG de la Barra Lateral
 import InicioIcon from '../assets/icons/inicio.svg';
 import CalendarioIcon from '../assets/icons/calendario.svg';
@@ -26,24 +26,19 @@ import AgregarNotaIcon from '../assets/icons/agregarNota.svg'
 import HistorialIcon from '../assets/icons/historial.svg'
 
 const CapyDo = () => {
+  // Estados Generales
   const [activeItem, setActiveItem] = useState('');
   const [fechaActual, setFechaActual] = useState('');
   const [activeTab, setActiveTab] = useState('');
   const [saludo, setSaludo] = useState('');
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   
-  const handleTabClick = (tab) => {
-    if (activeTab === tab) {
-      setActiveTab(""); // Si ya está seleccionada, la deseleccionamos
-    } else {
-      setActiveTab(tab); // Sino, la activamos
-    }
-  };
-
+  // ESTADOS Y FUNCIONES BLOC DE NOTAS
+  // Estados
   const [nota, setNota] = useState(localStorage.getItem("nota") || "");
   const [historialNotas, setHistorialNotas] = useState([]);
-  
-  // Guardar nota nueva
+
+  // Función Guardar nota nueva
   const handleAgregarNota = () => {
     if (nota.trim() !== "") {
       const nuevaNota = { id: Date.now(), texto: nota };
@@ -52,34 +47,19 @@ const CapyDo = () => {
     }
   };
 
-  // Mostrar historial guardado
+  // Función Mostrar historial guardado
   useEffect(() => {
     const historialGuardado = JSON.parse(localStorage.getItem("historialNotas")) || [];
     setHistorialNotas(historialGuardado);
   }, []);
 
-  // Guardar cambios en tiempo real
+  // Función Guardar cambios en tiempo real
   useEffect(() => {
     localStorage.setItem("nota", nota);
   }, [nota]);
 
-  // Efecto para manejar el movimiento del mouse (parallax)
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      // Calcular posición relativa del mouse (valores entre -0.5 y 0.5)
-      const x = (e.clientX / window.innerWidth) - 0.5;
-      const y = (e.clientY / window.innerHeight) - 0.5;
-      setMousePosition({ x, y });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
-  }, []);
-
-  // Estados para el cuadro de tareas
+  // ESTADOS Y FUNCIONES CUADRO DE TAREAS
+  // Estados
   const [tareas, setTareas] = useState([
     {
       id: 1,
@@ -137,7 +117,6 @@ const CapyDo = () => {
       return tarea.estado === "Pendiente" || tarea.estado === "En progreso";
     }
     if (activeTab === "Atrasadas") {
-      // Ejemplo: atrasadas = con fecha vencida
       if (!tarea.vence) return false;
       const [dia, mes] = tarea.vence.split("/").map(Number);
       const fechaVencimiento = new Date(new Date().getFullYear(), mes - 1, dia);
@@ -146,40 +125,10 @@ const CapyDo = () => {
     if (activeTab === "Finalizadas") {
       return tarea.estado === "Completada";
     }
-  return true; // Si no hay pestaña activa, muestra todas
+  return true;
 });
 
-  // --- Generar fecha y saludo dinámico ---
-  useEffect(() => {
-    const hoy = new Date();
-
-    // Fecha en español
-    const opciones = { weekday: 'long', day: 'numeric', month: 'long' };
-    const fechaFormateada = hoy.toLocaleDateString('es-ES', opciones);
-    const fechaCapitalizada = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
-    setFechaActual(fechaCapitalizada);
-
-    // Saludo según la hora
-    const hora = hoy.getHours();
-    if (hora >= 6 && hora < 12) {
-      setSaludo('Buenos días');
-    } else if (hora >= 12 && hora < 19) {
-      setSaludo('Buenas tardes');
-    } else {
-      setSaludo('Buenas noches');
-    }
-  }, []);
-
-  // Manejo de selección de items
-  const handleItemClick = (itemName) => {
-    if (activeItem === itemName) {
-      setActiveItem('');
-    } else {
-      setActiveItem(itemName);
-    }
-  };
-
-  // Funciones para el manejo de tareas
+// Funciones 
   const handleAgregarTarea = () => {
     if (nuevaTarea.tarea.trim() === '') return;
     
@@ -200,20 +149,26 @@ const CapyDo = () => {
     setMostrarFormulario(false);
   };
 
+  const handleTabClick = (tab) => {
+    if (activeTab === tab) {
+      setActiveTab("");
+    } else {
+      setActiveTab(tab);
+    }
+  };
+
   const handleEditarTarea = (id) => {
     const tareaAEditar = tareas.find(tarea => tarea.id === id);
-    setTareaEditada({...tareaAEditar}); // Respaldo de la tarea original
+    setTareaEditada({...tareaAEditar});
     setEditandoId(id);
   };
 
   const handleGuardarEdicion = () => {
-    // Los cambios ya están guardados en el estado tareas
     setEditandoId(null);
-    setTareaEditada(null); // Limpiamos el respaldo
+    setTareaEditada(null);
   };
 
   const handleCancelarEdicion = () => {
-    // Restauramos la tarea original
     if (tareaEditada) {
       setTareas(tareas.map(tarea => 
         tarea.id === editandoId ? tareaEditada : tarea
@@ -239,7 +194,55 @@ const CapyDo = () => {
     setNuevaTarea({ ...nuevaTarea, [name]: value });
   };
 
-  // Menú lateral
+
+// Efectos Generales  
+  // Generar fecha y saludo dinámico
+  useEffect(() => {
+    const hoy = new Date();
+
+    // Fecha en español
+    const opciones = { weekday: 'long', day: 'numeric', month: 'long' };
+    const fechaFormateada = hoy.toLocaleDateString('es-ES', opciones);
+    const fechaCapitalizada = fechaFormateada.charAt(0).toUpperCase() + fechaFormateada.slice(1);
+    setFechaActual(fechaCapitalizada);
+
+    // Saludo según la hora
+    const hora = hoy.getHours();
+    if (hora >= 6 && hora < 12) {
+      setSaludo('Buenos días');
+    } else if (hora >= 12 && hora < 19) {
+      setSaludo('Buenas tardes');
+    } else {
+      setSaludo('Buenas noches');
+    }
+  }, []);
+
+  // Efecto Parallax
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Calcular posición relativa del mouse (valores entre -0.5 y 0.5)
+      const x = (e.clientX / window.innerWidth) - 0.5;
+      const y = (e.clientY / window.innerHeight) - 0.5;
+      setMousePosition({ x, y });
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+// Menú Lateral 
+  // Manejo de selección de items
+  const handleItemClick = (itemName) => {
+    if (activeItem === itemName) {
+      setActiveItem('');
+    } else {
+      setActiveItem(itemName);
+    }
+  };
+
   const menuItems = [
     { 
       name: 'Inicio', 
@@ -260,27 +263,30 @@ const CapyDo = () => {
       <header>
         <h1 className="titulo">CapyDo</h1>
       </header>
-
-      <aside className="barraLateral">
-        <nav className="barraLateral-nav">
-          {menuItems.map((item, index) => (
-            <React.Fragment key={item.name}>
-              <div 
-                className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
-                onClick={() => handleItemClick(item.name)}
-                style={{cursor: 'pointer'}}
-              >
-                {item.icon}
-                <h2 className="titulo-barraLateral">{item.name}</h2>
-              </div>
-              {index < menuItems.length - 1 && <hr className="separador" />}
-            </React.Fragment>
-          ))}
-        </nav>
+  
+    {/* BARRA LATERAL */}
+    <aside className="barraLateral">
+      {/* Navegación */}
+      <nav className="barraLateral-nav">
+              {menuItems.map((item, index) => (
+                <React.Fragment key={item.name}>
+                  <div 
+                    className={`barraLateral-item ${activeItem === item.name ? 'active' : ''}`}
+                    onClick={() => handleItemClick(item.name)}
+                    style={{cursor: 'pointer'}}
+                  >
+                    {item.icon}
+                    <h2 className="titulo-barraLateral">{item.name}</h2>
+                  </div>
+                  {index < menuItems.length - 1 && <hr className="separador" />}
+                </React.Fragment>
+              ))}
+            </nav>
 
         <hr className="separador" />
 
-        <section className="barraLateral-espacios">
+      {/* Sección 'Espacios' */}
+      <section className="barraLateral-espacios">
           <div className="espacios-header">
             <img src={EspaciosIcon} alt="Espacios" className="menu-icon" />
             <h2 className="titulo-barraLateral">Espacios</h2>
@@ -294,19 +300,20 @@ const CapyDo = () => {
             />
           </div>
           <p className="subEspacios">Seleccioná un espacio para organizar tu trabajo</p>
-        </section>
+        </section>        
 
+        {/* Imagen Decorativa */}
         <div className="barraLateral-imagen">
           <img 
             src="../src/assets/carpinchoBarraLateral.jpg" 
             alt="Carpincho decorativo" 
           />
         </div>
-      </aside>
+    </aside>
 
-      <main className="contenido-principal">
-        {/* Banner de bienvenida con efecto parallax */}
-        <section 
+    <main className="contenido-principal">
+      {/* BANNER DE BIENVENIDA */}
+      <section 
           className="banner-bienvenida"
           style={{
             backgroundPosition: `${50 + mousePosition.x * 10}% ${50 + mousePosition.y * 10}%`
@@ -321,25 +328,26 @@ const CapyDo = () => {
             <img src={EditarIcon} alt="Editar" className="icono-boton" />
             Personalizar
           </button>
-        </section>
+      </section>
 
-        {/* Cuadro de tareas interactivo */}
-        <section className="cuadro-tareas">
-          <div className="tareas-header">
-            <h2 className="titulo-tareas">Mis tareas de la semana</h2>
-            <button 
-              className="btn-agregar"
-              onClick={() => setMostrarFormulario(!mostrarFormulario)}
-            >
-              <img src={AgregarIcon} alt="Agregar" className="icono-btn" />
-              Agregar Tarea
-            </button>
-          </div>
-          
-          {/* Formulario para agregar nueva tarea */}
-          {mostrarFormulario && (
-            <div className="formulario-tarea">
-              <h3>Nueva Tarea</h3>
+      {/* TABLA DE TAREAS */}
+      <section className="cuadro-tareas">
+        {/* Encabezado Tareas */}
+        <div className="tareas-header">
+          <h2 className="titulo-tareas">Mis tareas de la semana</h2>
+          <button 
+            className="btn-agregar"
+            onClick={() => setMostrarFormulario(!mostrarFormulario)}
+          >
+            <img src={AgregarIcon} alt="Agregar" className="icono-btn" />
+            Agregar Tarea
+          </button>
+        </div>
+
+        {/* Formulario para agregar nueva tarea */}
+        {mostrarFormulario && (
+          <div className="formulario-tarea">
+            <h3>Nueva Tarea</h3>
               <div className="form-campos">
                 <input
                   type="text"
@@ -402,7 +410,8 @@ const CapyDo = () => {
               </div>
             </div>
           )}
-          
+
+          {/* Tabla de Tareas */}
           <div className="contenedor-tabla">
             <table className="tabla-tareas">
               <thead>
@@ -439,7 +448,7 @@ const CapyDo = () => {
                   <th>Acciones</th>
                 </tr>
               </thead>
-
+        
               <tbody>
                 {tareasFiltradas.map(tarea => (
                   <tr key={tarea.id}>
@@ -562,7 +571,8 @@ const CapyDo = () => {
             </table>
           </div>
         </section>
-        {/* Sección de próximas reuniones y bloc de notas */}
+
+      {/* Sección de próximas reuniones y bloc de notas */}
         <section className="reuniones-notas">
           {/* Próximas reuniones */}
           <div className="reuniones-card">
