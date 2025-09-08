@@ -102,3 +102,7 @@
     50% { opacity: 1; transform: scale(1.05); }
     100% { opacity: 0.3; transform: scale(0.95); }
     }
+
+    h2, h3{
+        color: #1C3ABD;
+    }
