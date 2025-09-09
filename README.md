@@ -87,11 +87,11 @@ Estos se integran dentro de otras páginas:
 |                  | Crear Espacio                               | MELI        |
 |                  | Espacio Creado                              | MELI        |
 |                  | Crear Proyecto                              | MER         |
-|                  | Personalizar Perfil                         | ANA         |
+|                  | Perfil (Vista / Personalización)            | ANA         |
 |                  | IA Chatbot                                  | MER         |
 |                  | Ajustes / Configuración                     | MARIAN      |
 |                  | Configuración del Proyecto (Administración) | NICO        |
-| **Componentes**   | NavBar                                      | WAN         |
+| **Componentes**   | NavBar                                     | WAN         |
 |                  | Notificaciones                              | WAN         |
 
 ---
