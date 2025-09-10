@@ -20,8 +20,7 @@ body {
     min-height: 100vh;
 }  
 
-.container {
-    width: 100%;
+.container-profile-card {
     max-width: 1200px;
     display: flex;
     flex-wrap: wrap;
@@ -30,6 +29,8 @@ body {
 }
 
 .profile-card {
+    display: flex;
+    flex-direction: column;
     background: rgba(255, 255, 255, 0.95);
     border-radius: 20px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
@@ -63,7 +64,7 @@ body {
 }
 
 .profile-title {
-    color: #6a11cb;
+    color: #5060C7;
     font-size: 18px;
     font-weight: 500;
     margin-bottom: 20px;
@@ -112,40 +113,6 @@ body {
     color: #666;
     font-size: 14px;
     pointer-events: none;
-}
-
-.education-select {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
-}
-
-.education-select:focus {
-    outline: none;
-    border-color: #6a11cb;
-    box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
-}
-
-.institution-input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    background-color: white;
-    font-size: 14px;
-    color: #333;
-    margin-top: 5px;
-}
-
-.institution-input:focus {
-    outline: none;
-    border-color: #6a11cb;
-    box-shadow: 0 0 0 2px rgba(106, 17, 203, 0.2);
 }
 
 .detail-content h4 {
@@ -223,7 +190,7 @@ body {
     display: block;
     font-size: 24px;
     font-weight: 700;
-    color: #6a11cb;
+    color: #5060C7;
 }
 
 .stat-label {
@@ -243,17 +210,42 @@ body {
     }
 }
 
-/* Estilos para el editor de perfil */
-.editor-card {
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    width: 350px;
-    padding: 30px;
-    margin: 20px;
-    text-align: left;
-    overflow: hidden;
-    position: relative;
+.container-biography {
+    margin-top: 15px;
+}
+
+.profile-username {
+    margin-top: 5px;
+    font-size: 30px;
+}
+
+.profile-mail {
+    font-size: 20px;    
+    color: #5060C7;
+}
+
+.edit-btn {
+    display: flex;
+    flex-direction: row;
+    background: #5060C7;
+    color: white;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+}
+
+.edit-btn:hover {
+    background: #4050b0;
+}
+
+.editar-btn {
+    margin-right: 5px;
+    width: 16px;
+    height: 16px;
 }
 
 .bio-block {
@@ -275,43 +267,6 @@ body {
     color: #555;
     line-height: 1.5;
 }
-
-.edit-btn {
-    background: #6a11cb;
-    color: white;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s ease;
-    margin-top: 10px;
-}
-
-.edit-btn:hover {
-    background: #5b0faf;
-}
-
-.profile-input {
-    width: 100%;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 16px;
-    margin-bottom: 10px;
-    text-align: center;
-}
-
-.name-input {
-    font-weight: bold;
-    font-size: 18px;
-}
-
-.role-input {
-    font-style: italic;
-    color: #6a11cb;
-}
-
 
 /* Ajustes responsivos */
 @media (max-width: 768px) {
