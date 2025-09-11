@@ -1,3 +1,4 @@
+/* Perfil.css */
 /* Importar Fuente */
 @import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
 
@@ -18,14 +19,12 @@ body {
 .app {
     display: flex;
     min-height: 100vh;
+    padding: 20px;
+    gap: 30px;
 }  
 
 .container-profile-card {
-    max-width: 1200px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
+    flex: 0 0 auto;
 }
 
 .profile-card {
@@ -36,7 +35,6 @@ body {
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     width: 350px;
     padding: 30px;
-    margin: 20px;
     text-align: center;
     overflow: hidden;
     position: relative;
@@ -198,25 +196,30 @@ body {
     color: #666;
 }
 
-@media (max-width: 768px) {
-    .container {
-        flex-direction: column;
-        align-items: center;
-    }
-
-.profile-card {
-        width: 100%;
-        max-width: 400px;
-    }
+.container-biography {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: 25px;
 }
 
-.container-biography {
-    margin-top: 15px;
+.profile-header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 25px;
+}
+
+.user-info {
+    flex: 1;
 }
 
 .profile-username {
-    margin-top: 5px;
     font-size: 30px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
 }
 
 .profile-mail {
@@ -226,61 +229,274 @@ body {
 
 .edit-btn {
     display: flex;
-    flex-direction: row;
+    align-items: center;
     background: #5060C7;
     color: white;
     border: none;
-    padding: 8px 14px;
+    padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 14px;
-    transition: background 0.3s ease;
-    margin-top: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    align-self: center;
 }
 
 .edit-btn:hover {
     background: #4050b0;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .editar-btn {
-    margin-right: 5px;
+    margin-right: 8px;
     width: 16px;
     height: 16px;
 }
 
 .bio-block {
-    background: #ecf0fd;
-    padding: 15px;
-    border-radius: 10px;
-    margin-top: 20px;
-    pointer-events: none;
+    background: #ECF0FD;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 }
 
 .bio-block h4 {
-    margin-bottom: 8px;
+    margin-bottom: 15px;
     color: #333;
-    font-size: 16px;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 .bio-block p {
-    font-size: 14px;
+    font-size: 16px;
     color: #555;
-    line-height: 1.5;
+    line-height: 1.6;
+}
+
+.friends-section {
+    width: 280px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.friends-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+.friends-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.friend-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+
+.friend-item:hover {
+    background-color: #f8f9fa;
+}
+
+.friend-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    flex-shrink: 0;
+    overflow: hidden; /* Asegura que la imagen no se salga del círculo */
+}
+
+.friend-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
+    border-radius: 50%; /* Hace que la imagen sea circular */
+}
+
+.friend-name {
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.friends-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f2f5;
+}
+
+.add-friend-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-friend-btn img {
+    width: 22px;
+    height: 22px;
+    filter: brightness(0) contrast(100%);
+    transition: transform 0.2s ease;
+    filter: brightness(0) saturate(100%) invert(19%) sepia(2%) 
+            saturate(376%) hue-rotate(202deg) brightness(94%) contrast(92%);
+}
+
+.add-friend-btn:hover img {
+    transform: scale(1.2);
+    filter: brightness(0) saturate(100%) invert(34%) sepia(93%) 
+            saturate(1200%) hue-rotate(225deg) brightness(92%) contrast(96%);
+}
+
+.extra-sections {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+/* Actividad y Tareas */
+.activity-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 280px;
+    height: 240px;
+}
+
+.tasks-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 280px;
+    height: 410px;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #333;
+    border-bottom: 2px solid #f0f2f5;
+    padding-bottom: 8px;
+}
+
+/* Lista Actividad */
+.activity-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.activity-item {
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.activity-item.asignada {
+    background: #E6D9F6;
+    color: #5A2E91;
+}
+
+.activity-item.completa {
+    background: #DFF6E6;
+    color: #207044;
+}
+
+/* Lista Tareas */
+.task-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.task-item {
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.task-item.urgente { background: #FFD6D6; color: #B22222; }
+.task-item.pospuesto { background: #E6F0FA; color: #2A4D7E; }
+.task-item.cancelado { background: #F8D7DA; color: #721C24; }
+.task-item.progreso { background: #FFF5CC; color: #856404; }
+
+/* Ajustes responsivos adicionales */
+@media (max-width: 768px) {
+    .friends-section {
+        padding: 20px;
+    }
+    
+    .friend-item {
+        padding: 10px;
+    }
+    
+    .friend-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+        margin-right: 12px;
+    }
+
+    .friend-name {
+        font-size: 14px;
+    }
 }
 
 /* Ajustes responsivos */
-@media (max-width: 768px) {
-    .container {
+@media (max-width: 968px) {
+    .app {
         flex-direction: column;
         align-items: center;
     }
-
-    .profile-card, .editor-card {
+    
+    .container-biography {
         width: 100%;
-        max-width: 400px;
+        max-width: 600px;
+    }
+}
+
+@media (max-width: 768px) {
+    .profile-header-section {
+        flex-direction: column;
+        gap: 15px;
     }
     
-    .editor-actions {
-        flex-direction: column;
+    .edit-btn {
+        align-self: flex-start;
+    }
+    
+    .profile-card {
+        width: 100%;
+        max-width: 400px;
     }
 }
