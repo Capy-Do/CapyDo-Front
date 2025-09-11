@@ -381,7 +381,7 @@ body {
     border-radius: 15px;
     box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     width: 280px;
-    height: 240px;
+    height: 26 0px;
 }
 
 .tasks-section {
@@ -411,21 +411,59 @@ body {
 }
 
 .activity-item {
-    padding: 10px;
-    border-radius: 10px;
+    background: #f5faff;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
     font-size: 14px;
     font-weight: 500;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.activity-item.asignada {
+.activity-title {
+    font-size: 15px;
+    font-weight: 600;
+    color: #2a2a2a;
+    pointer-events: none;
+}
+
+.activity-content {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.activity-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 4px 8px;
+    align-self: flex-start;
+}
+
+/* Icono */
+.activity-icon {
+    width: 20px;
+    height: 17px;
+}
+
+/* Estados */
+.activity-item.asignada .activity-status {
     background: #E6D9F6;
     color: #5A2E91;
 }
 
-.activity-item.completa {
+.activity-item.completa .activity-status {
     background: #DFF6E6;
     color: #207044;
 }
+
 
 /* Lista Tareas */
 .task-list {
@@ -436,19 +474,166 @@ body {
 }
 
 .task-item {
-    padding: 12px;
-    border-radius: 10px;
-    font-size: 14px;
-    font-weight: 500;
+    background: #f5faff;
+    border-radius: 15px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.task-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2a2a2a;
+    pointer-events: none;
+}
+
+.task-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.task-item.urgente { background: #FFD6D6; color: #B22222; }
-.task-item.pospuesto { background: #E6F0FA; color: #2A4D7E; }
-.task-item.cancelado { background: #F8D7DA; color: #721C24; }
-.task-item.progreso { background: #FFF5CC; color: #856404; }
+.task-status {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 8px;
+    padding: 4px 10px;
+    gap: 6px;
+    pointer-events: none;
+}
+
+.task-status .task-icon {
+    width: 20px;
+    height: 17px;
+}
+
+/* Colores por estado */
+.task-item.urgente .task-status {
+    background: #FFE2B6;
+    color: #B85C00;
+}
+
+.task-item.pospuesto .task-status {
+    background: #D7E6FF;
+    color: #2653A6;
+}
+
+.task-item.cancelado .task-status {
+    background: #FFD7D7;
+    color: #9E1C1C;
+}
+
+.task-item.progreso .task-status {
+    background: #FFF5B6;
+    color: #7A6B00;
+}
+
+.task-item.vencido .task-status {
+    background: #FFD1C9;
+    color: #B33F30;
+}
+
+.task-date {
+    font-size: 13px;
+    color: #666;
+}
+
+/* Contenedor para Tasks y Activity */
+.tasks-activity-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+/* Ajustes responsivos para el contenedor */
+@media (max-width: 968px) {
+    .tasks-activity-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .activity-section, 
+    .tasks-section {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+/* Ajustes para las secciones dentro del contenedor */
+.activity-section, 
+.tasks-section {
+    background: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    width: 280px;
+    /* Eliminamos la altura fija para que se ajuste al contenido */
+    height: auto;
+    min-height: auto;
+}
+
+/* Ajustamos el espaciado interno de las listas para mejor visualización */
+.activity-list,
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Ajustamos los elementos de lista para mejor espaciado */
+.activity-item,
+.task-item {
+    padding: 12px;
+    border-radius: 12px;
+}
+
+/* Aseguramos que el contenido de las tareas tenga suficiente espacio */
+.task-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Ajustamos el footer de las tareas para mejor distribución */
+.task-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 8px;
+}
+
+/* Ajustamos el diseño de la sección de amigos para que coincida */
+.friends-section {
+    width: 280px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    /* Altura automática según contenido */
+    height: auto;
+}
+
+/* Ajustamos el diseño responsivo general */
+@media (max-width: 768px) {
+    .extra-sections {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .friends-section,
+    .activity-section,
+    .tasks-section {
+        width: 100%;
+        max-width: 100%;
+    }
+}
 
 /* Ajustes responsivos adicionales */
 @media (max-width: 768px) {
