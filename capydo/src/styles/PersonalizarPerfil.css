@@ -1,0 +1,264 @@
+/* Importar Fuente */
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+/* Selector Universal */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Lexend", sans-serif;
+}
+
+body {
+    background-color: #f5f7f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.profile-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    text-align: center;
+    position: relative;
+}
+
+.edit-button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-button, .save-button, .cancel-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.edit-button {
+    background: #5060C7;
+    color: white;
+}
+
+.save-button {
+    background: #4CAF50;
+    color: white;
+}
+
+.cancel-button {
+    background: #f44336;
+    color: white;
+}
+
+.edit-button:hover {
+    background: #4050b0;
+}
+
+.save-button:hover {
+    background: #45a049;
+}
+
+.cancel-button:hover {
+    background: #da190b;
+}
+
+.profile-header {
+    margin-bottom: 25px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    margin-bottom: 20px;
+}
+
+.photo-selector {
+    margin-top: 20px;
+}
+
+.photo-selector h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.photo-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.photo-option {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.photo-option.selected {
+    border: 3px solid #5060C7;
+    transform: scale(1.1);
+}
+
+.photo-option:hover {
+    transform: scale(1.05);
+}
+
+.profile-details {
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    background: #f8f9fa;
+}
+
+.detail-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+    color: white;
+    font-size: 18px;
+}
+
+.detail-content h4 {
+    color: #333;
+    font-size: 16px;
+    margin-bottom: 3px;
+}
+
+.detail-content p {
+    color: #666;
+    font-size: 14px;
+}
+
+.edit-input, .edit-textarea, .social-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.edit-textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.profile-bio {
+    margin-bottom: 20px;
+}
+
+.bio-text {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    margin-bottom: 15px;
+}
+
+.info-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 500;
+    color: #333;
+}
+
+.username, .email {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.social-section {
+    margin-top: 30px;
+}
+
+.social-section h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-link-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-radius: 8px;
+    background: #f8f9fa;
+}
+
+.social-icon {
+    width: 24px;
+    height: 24px;
+}
+
+.social-link {
+    color: #5060C7;
+    text-decoration: none;
+}
+
+.social-link:hover {
+    text-decoration: underline;
+}
+
+.no-link {
+    color: #999;
+    font-style: italic;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .app {
+        padding: 10px;
+    }
+    
+    .profile-card {
+        padding: 20px;
+    }
+    
+    .photo-options {
+        gap: 8px;
+    }
+    
+    .photo-option {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .edit-button-container {
+        flex-direction: column;
+    }
+}
